@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resumo didático completo do pacote java.lang e de seus principais subpacotes no Java 25.">
+    <title>java.lang e principais subpacotes — Java 25</title>
+    <style>
+        :root {
+            --paper: #f4efe4;
+            --paper-strong: #e8dfce;
+            --white: #fffdf8;
+            --ink: #17283b;
+            --muted: #586675;
+            --navy: #102a43;
+            --navy-soft: #284b63;
+            --teal: #167d78;
+            --teal-dark: #0e5f5b;
+            --teal-light: #dcefed;
+            --amber: #e4a11b;
+            --amber-light: #fff1ca;
+            --red: #a63d40;
+            --red-light: #fae3e3;
+            --blue-light: #e4eef7;
+            --green-light: #e3f2e8;
+            --border: #c8c1b3;
+            --code-bg: #122231;
+            --code-ink: #edf6f5;
+            --shadow: 0 12px 32px rgba(16, 42, 67, 0.12);
+            --radius: 12px;
+            --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+            --sans: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: #d9d4ca;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: #d9d4ca;
+            font-family: var(--sans);
+            line-height: 1.55;
+        }
+
+        a {
+            color: var(--teal-dark);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: var(--amber);
+        }
+
+        code,
+        kbd,
+        samp {
+            font-family: var(--mono);
+        }
+
+        .document {
+            width: min(100%, 1120px);
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .page {
+            position: relative;
+            width: 100%;
+            min-height: 297mm;
+            margin: 0 auto 24px;
+            padding: 18mm 17mm 16mm;
+            overflow: hidden;
+            background:
+                    linear-gradient(
+                            135deg,
+                            rgba(22, 125, 120, 0.035),
+                            transparent 34%
+                    ),
+                    var(--paper);
+            border: 1px solid rgba(16, 42, 67, 0.12);
+            box-shadow: var(--shadow);
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 7px;
+            background: linear-gradient(
+                    to bottom,
+                    var(--teal),
+                    var(--navy) 58%,
+                    var(--amber)
+            );
+        }
+
+        .page-header,
+        .page-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            color: var(--muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .page-header {
+            margin-bottom: 18px;
+            padding-bottom: 9px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-footer {
+            position: absolute;
+            right: 17mm;
+            bottom: 8mm;
+            left: 17mm;
+            padding-top: 7px;
+            border-top: 1px solid var(--border);
+        }
+
+        .page-number {
+            color: var(--teal-dark);
+            font-family: var(--mono);
+            font-weight: 700;
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--teal-dark);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            color: var(--navy);
+            line-height: 1.12;
+        }
+
+        h1 {
+            max-width: 850px;
+            font-size: clamp(2.8rem, 7vw, 5.8rem);
+            letter-spacing: -0.055em;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            letter-spacing: -0.04em;
+        }
+
+        h3 {
+            margin-top: 23px;
+            margin-bottom: 10px;
+            color: var(--teal-dark);
+            font-size: 1.28rem;
+        }
+
+        h4 {
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        p {
+            margin: 0 0 11px;
+        }
+
+        ul,
+        ol {
+            margin: 8px 0 14px;
+            padding-left: 22px;
+        }
+
+        li + li {
+            margin-top: 5px;
+        }
+
+        strong {
+            color: var(--navy);
+        }
+
+        .lead {
+            max-width: 780px;
+            color: var(--navy-soft);
+            font-size: 1.13rem;
+            line-height: 1.68;
+        }
+
+        .small {
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        .mono {
+            font-family: var(--mono);
+        }
+
+        .package-name {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 10px;
+            color: var(--teal-dark);
+            background: var(--teal-light);
+            border: 1px solid rgba(22, 125, 120, 0.25);
+            border-radius: 999px;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .hero {
+            display: flex;
+            min-height: 255mm;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-title {
+            padding-top: 20mm;
+        }
+
+        .hero-subtitle {
+            max-width: 710px;
+            margin-top: 22px;
+            color: var(--navy-soft);
+            font-size: 1.2rem;
+        }
+
+        .hero-mark {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .java-badge {
+            display: grid;
+            width: 94px;
+            height: 94px;
+            place-items: center;
+            color: var(--white);
+            background: var(--navy);
+            border: 6px solid var(--teal);
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 900;
+            box-shadow: 0 0 0 7px rgba(228, 161, 27, 0.5);
+        }
+
+        .hero-line {
+            height: 3px;
+            background: linear-gradient(
+                    to right,
+                    var(--teal),
+                    var(--amber),
+                    transparent
+            );
+        }
+
+        .cover-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .cover-meta > div {
+            padding: 13px;
+            background: rgba(255, 253, 248, 0.72);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .cover-meta span {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--muted);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .cover-meta strong {
+            font-family: var(--mono);
+            font-size: 0.91rem;
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+            display: grid;
+            gap: 14px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .card {
+            padding: 15px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px rgba(16, 42, 67, 0.05);
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .card p:last-child,
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card-title {
+            margin-bottom: 6px;
+            color: var(--navy);
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .accent-card {
+            border-top: 5px solid var(--teal);
+        }
+
+        .amber-card {
+            border-top: 5px solid var(--amber);
+        }
+
+        .callout {
+            margin: 14px 0;
+            padding: 14px 16px;
+            background: var(--blue-light);
+            border-left: 5px solid var(--navy-soft);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .callout.tip {
+            background: var(--green-light);
+            border-left-color: var(--teal);
+        }
+
+        .callout.warning {
+            background: var(--amber-light);
+            border-left-color: var(--amber);
+        }
+
+        .callout.danger {
+            background: var(--red-light);
+            border-left-color: var(--red);
+        }
+
+        .callout.preview {
+            background:
+                    repeating-linear-gradient(
+                            -45deg,
+                            rgba(228, 161, 27, 0.08),
+                            rgba(228, 161, 27, 0.08) 9px,
+                            rgba(255, 253, 248, 0.7) 9px,
+                            rgba(255, 253, 248, 0.7) 18px
+                    ),
+                    var(--amber-light);
+            border: 2px solid var(--amber);
+            border-left-width: 7px;
+            border-radius: var(--radius);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.69rem;
+            font-weight: 900;
+            letter-spacing: 0.055em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .badge.stable {
+            color: #0c5940;
+            background: #d9f2e5;
+            border: 1px solid #79bc9b;
+        }
+
+        .badge.legacy {
+            color: #6b4a00;
+            background: var(--amber-light);
+            border: 1px solid #d5a442;
+        }
+
+        .badge.preview {
+            color: #6c3900;
+            background: #ffe1a1;
+            border: 1px solid var(--amber);
+        }
+
+        .badge.removal {
+            color: #7f2428;
+            background: var(--red-light);
+            border: 1px solid #cf787b;
+        }
+
+        .badge.interface {
+            color: #17456c;
+            background: #dceafa;
+            border: 1px solid #7ca2c8;
+        }
+
+        .badge.class {
+            color: #0d5b57;
+            background: var(--teal-light);
+            border: 1px solid #79b7b3;
+        }
+
+        .badge.enum {
+            color: #5d3b80;
+            background: #eee3f7;
+            border: 1px solid #b398cc;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 8px 0 13px;
+        }
+
+        .method-table,
+        .compare-table,
+        .index-table {
+            width: 100%;
+            margin: 13px 0;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            font-size: 0.82rem;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .method-table th,
+        .compare-table th,
+        .index-table th {
+            padding: 9px 10px;
+            color: var(--white);
+            background: var(--navy);
+            font-size: 0.74rem;
+            letter-spacing: 0.04em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .method-table td,
+        .compare-table td,
+        .index-table td {
+            padding: 9px 10px;
+            vertical-align: top;
+            border-top: 1px solid var(--border);
+        }
+
+        .method-table tr:first-child td,
+        .compare-table tr:first-child td,
+        .index-table tr:first-child td {
+            border-top: 0;
+        }
+
+        .method-table tr:nth-child(even) td,
+        .compare-table tr:nth-child(even) td,
+        .index-table tr:nth-child(even) td {
+            background: rgba(232, 223, 206, 0.31);
+        }
+
+        .method-table code,
+        .compare-table code,
+        .index-table code {
+            color: var(--teal-dark);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .code {
+            position: relative;
+            margin: 13px 0;
+            padding: 16px;
+            overflow-x: auto;
+            color: var(--code-ink);
+            background: var(--code-bg);
+            border: 1px solid #2d485e;
+            border-radius: var(--radius);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            line-height: 1.62;
+            tab-size: 4;
+            white-space: pre;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .code::before {
+            content: "JAVA";
+            position: absolute;
+            top: 6px;
+            right: 9px;
+            color: #8cb6b2;
+            font-size: 0.61rem;
+            font-weight: 900;
+            letter-spacing: 0.13em;
+        }
+
+        .inline-code {
+            padding: 0.1em 0.35em;
+            color: var(--teal-dark);
+            background: rgba(22, 125, 120, 0.1);
+            border-radius: 4px;
+            font-size: 0.91em;
+        }
+
+        .diagram {
+            margin: 16px 0;
+            padding: 17px;
+            background: rgba(255, 253, 248, 0.79);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .diagram-title {
+            margin-bottom: 13px;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .flow {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .flow.vertical {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flow-node {
+            display: grid;
+            min-width: 105px;
+            min-height: 49px;
+            padding: 9px 12px;
+            place-items: center;
+            color: var(--navy);
+            background: var(--white);
+            border: 2px solid var(--teal);
+            border-radius: 9px;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .flow-node.navy {
+            color: var(--white);
+            background: var(--navy);
+            border-color: var(--navy);
+        }
+
+        .flow-node.amber {
+            background: var(--amber-light);
+            border-color: var(--amber);
+        }
+
+        .flow-arrow {
+            display: grid;
+            place-items: center;
+            color: var(--amber);
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .tree {
+            display: grid;
+            gap: 8px;
+        }
+
+        .tree-level {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tree-link {
+            height: 18px;
+            margin: -2px auto;
+            border-left: 2px solid var(--amber);
+        }
+
+        .tree-node {
+            padding: 7px 10px;
+            color: var(--navy);
+            background: var(--white);
+            border: 2px solid var(--teal);
+            border-radius: 8px;
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .tree-node.root {
+            color: var(--white);
+            background: var(--navy);
+            border-color: var(--navy);
+        }
+
+        .tree-node.special {
+            background: var(--amber-light);
+            border-color: var(--amber);
+        }
+
+        .complexity {
+            display: inline-block;
+            min-width: 48px;
+            padding: 2px 6px;
+            color: var(--navy);
+            background: var(--amber-light);
+            border: 1px solid rgba(228, 161, 27, 0.6);
+            border-radius: 5px;
+            font-family: var(--mono);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .toc {
+            columns: 2;
+            column-gap: 26px;
+            margin-top: 16px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .toc li {
+            break-inside: avoid;
+            margin: 0 0 7px;
+        }
+
+        .toc a {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 7px 9px;
+            color: var(--navy);
+            background: rgba(255, 253, 248, 0.58);
+            border-bottom: 1px dotted var(--border);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: var(--teal-dark);
+            background: var(--white);
+        }
+
+        .toc-number {
+            color: var(--amber);
+            font-family: var(--mono);
+            font-weight: 900;
+        }
+
+        .section-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 16px 0;
+        }
+
+        .section-nav a {
+            padding: 6px 9px;
+            color: var(--navy);
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .section-nav a:hover {
+            color: var(--white);
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        .check-list {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 26px;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: var(--teal);
+            font-weight: 900;
+        }
+
+        .definition {
+            display: grid;
+            grid-template-columns: 145px 1fr;
+            gap: 8px 14px;
+            margin: 13px 0;
+            padding: 13px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 0.86rem;
+        }
+
+        .definition dt {
+            color: var(--teal-dark);
+            font-weight: 800;
+        }
+
+        .definition dd {
+            margin: 0;
+        }
+
+        .visual-list {
+            display: flex;
+            gap: 7px;
+            padding: 11px;
+            background: var(--navy);
+            border-radius: 9px;
+        }
+
+        .visual-list span {
+            display: grid;
+            min-width: 45px;
+            min-height: 43px;
+            padding: 6px;
+            place-items: center;
+            color: var(--navy);
+            background: var(--white);
+            border-bottom: 5px solid var(--amber);
+            border-radius: 5px;
+            font-family: var(--mono);
+            font-weight: 800;
+        }
+
+        .print-only {
+            display: none;
+        }
+
+        .screen-toolbar {
+            position: sticky;
+            z-index: 20;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 9px 16px;
+            color: var(--white);
+            background: rgba(16, 42, 67, 0.96);
+            box-shadow: 0 4px 15px rgba(16, 42, 67, 0.18);
+            backdrop-filter: blur(8px);
+        }
+
+        .screen-toolbar a,
+        .screen-toolbar button {
+            color: var(--white);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.34);
+            border-radius: 6px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.78rem;
+            text-decoration: none;
+        }
+
+        .screen-toolbar a {
+            padding: 6px 9px;
+        }
+
+        .screen-toolbar button {
+            padding: 6px 10px;
+        }
+
+        .screen-toolbar button:hover,
+        .screen-toolbar a:hover {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+
+        @media (max-width: 760px) {
+            .document {
+                padding: 0;
+            }
+
+            .page {
+                min-height: auto;
+                margin-bottom: 12px;
+                padding: 28px 22px 58px;
+                border-right: 0;
+                border-left: 0;
+            }
+
+            .page-footer {
+                right: 22px;
+                bottom: 18px;
+                left: 22px;
+            }
+
+            .grid-2,
+            .grid-3,
+            .grid-4,
+            .cover-meta,
+            .definition {
+                grid-template-columns: 1fr;
+            }
+
+            .toc {
+                columns: 1;
+            }
+
+            .flow {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .hero {
+                min-height: 85vh;
+            }
+
+            .screen-toolbar span {
+                display: none;
+            }
+
+            .method-table,
+            .compare-table,
+            .index-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            html,
+            body {
+                background: var(--paper) !important;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            .screen-toolbar {
+                display: none !important;
+            }
+
+            .document {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                min-height: 297mm;
+                max-height: 297mm;
+                margin: 0;
+                padding: 16mm 15mm 15mm;
+                overflow: hidden;
+                border: 0;
+                box-shadow: none;
+                break-after: page;
+                page-break-after: always;
+            }
+
+            .page-footer {
+                right: 15mm;
+                bottom: 7mm;
+                left: 15mm;
+            }
+
+            .print-only {
+                display: initial;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            h2,
+            h3,
+            h4 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .card,
+            .callout,
+            .diagram,
+            .code,
+            table,
+            tr {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .code {
+                overflow: hidden;
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+            }
+        }
+    </style>
+</head>
+<body id="topo">
+<nav class="screen-toolbar" aria-label="Controles do documento">
+    <strong>java.lang · Java 25</strong>
+    <span>Resumo didático autocontido</span>
+    <div><a href="#sumario">Sumário</a><button type="button" onclick="window.print()">Imprimir / PDF</button></div>
+</nav>
+<main class="document">
+<section class="page hero" id="capa">
+    <div class="hero-title">
+        <p class="eyebrow">Java Standard Edition 25</p>
+        <h1>java.lang e principais subpacotes</h1>
+        <p class="hero-subtitle">
+            Objetos, textos, tipos primitivos empacotados, matemática, sistema,
+            processos, threads, exceções, reflexão e estruturas fundamentais
+            da linguagem Java.
+        </p>
+        <div class="hero-mark" aria-hidden="true">
+            <div class="java-badge">25</div>
+            <div>
+                <div class="hero-line"></div>
+                <p class="small" style="margin-top: 10px;">Referência técnica e material de estudo</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="cover-meta">
+            <div><span>Versão de referência</span><strong>Java 25</strong></div>
+            <div><span>Formato</span><strong>HTML autocontido</strong></div>
+            <div><span>Idioma</span><strong>Português brasileiro</strong></div>
+        </div>
+        <div class="callout tip" style="margin-top: 18px;">
+            <strong>Objetivo:</strong> compreender as APIs disponíveis sem importação
+            explícita, seus contratos, usos recorrentes e armadilhas mais importantes.
+        </div>
+    </div>
+    
+    <footer class="page-footer">
+        <span>java.lang e subpacotes</span>
+        <span class="page-number">01</span>
+    </footer>
+</section>
+
+<section class="page" id="sumario">
+    <header class="page-header"><span>Guia de navegação</span><span>Sumário</span></header>
+    <p class="eyebrow">Conteúdo navegável</p>
+    <h2>Sumário</h2>
+    <p class="lead">Use os links na versão de tela. Cada assunto foi organizado como uma unidade de consulta rápida e de revisão.</p>
+    <ol class="toc">
+    <li><a href="#como-usar"><span>Como usar este material</span><span class="toc-number">03</span></a></li>
+    <li><a href="#visao-geral"><span>Visão geral de java.lang</span><span class="toc-number">04</span></a></li>
+    <li><a href="#object"><span>Object e contratos fundamentais</span><span class="toc-number">05</span></a></li>
+    <li><a href="#object-coordenacao"><span>Monitores, cópia e finalização</span><span class="toc-number">06</span></a></li>
+    <li><a href="#string-fundamentos"><span>String: fundamentos e comparação</span><span class="toc-number">07</span></a></li>
+    <li><a href="#string-metodos"><span>String: métodos essenciais</span><span class="toc-number">08</span></a></li>
+    <li><a href="#unicode"><span>Unicode, Character e CharSequence</span><span class="toc-number">09</span></a></li>
+    <li><a href="#builders"><span>StringBuilder e StringBuffer</span><span class="toc-number">10</span></a></li>
+    <li><a href="#wrappers"><span>Wrappers, boxing e parsing</span><span class="toc-number">11</span></a></li>
+    <li><a href="#inteiros"><span>Integer, Long e operações binárias</span><span class="toc-number">12</span></a></li>
+    <li><a href="#ponto-flutuante"><span>Float, Double e ponto flutuante</span><span class="toc-number">13</span></a></li>
+    <li><a href="#math"><span>Math e StrictMath</span><span class="toc-number">14</span></a></li>
+    <li><a href="#system-io"><span>System e IO</span><span class="toc-number">15</span></a></li>
+    <li><a href="#runtime"><span>Runtime e versões</span><span class="toc-number">16</span></a></li>
+    <li><a href="#processos"><span>ProcessBuilder, Process e ProcessHandle</span><span class="toc-number">17</span></a></li>
+    <li><a href="#threads"><span>Thread: ciclo de vida e interrupção</span><span class="toc-number">18</span></a></li>
+    <li><a href="#virtual-threads"><span>Builders e virtual threads</span><span class="toc-number">19</span></a></li>
+    <li><a href="#contexto"><span>ThreadLocal, ScopedValue e StableValue</span><span class="toc-number">20</span></a></li>
+    <li><a href="#throwable"><span>Throwable e hierarquia de falhas</span><span class="toc-number">21</span></a></li>
+    <li><a href="#exceptions"><span>Exceções: desenho e tratamento</span><span class="toc-number">22</span></a></li>
+    <li><a href="#class"><span>Class e tipos em tempo de execução</span><span class="toc-number">23</span></a></li>
+    <li><a href="#reflection"><span>java.lang.reflect</span><span class="toc-number">24</span></a></li>
+    <li><a href="#loading-modules"><span>ClassLoader, Module e Package</span><span class="toc-number">25</span></a></li>
+    <li><a href="#records-enums"><span>Record, Enum e tipos especiais</span><span class="toc-number">26</span></a></li>
+    <li><a href="#interfaces"><span>Interfaces e anotações fundamentais</span><span class="toc-number">27</span></a></li>
+    <li><a href="#stackwalker"><span>StackWalker e diagnóstico</span><span class="toc-number">28</span></a></li>
+    <li><a href="#subpacotes"><span>Principais subpacotes de java.lang</span><span class="toc-number">29</span></a></li>
+    <li><a href="#indice"><span>Índice de APIs e métodos</span><span class="toc-number">30</span></a></li>
+    <li><a href="#referencias"><span>Referências e checklist</span><span class="toc-number">31</span></a></li></ol>
+    
+    <footer class="page-footer">
+        <span>Estrutura do documento</span>
+        <span class="page-number">02</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 3 — COMO USAR ESTE MATERIAL -->
+<section class="page" id="como-usar">
+    <header class="page-header">
+        <span>Leitura orientada</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Convenções</p>
+    <h2>Como usar este material</h2>
+    
+    <div class="grid-2">
+        <article class="card accent-card">
+            <h3 style="margin-top:0">Assinaturas simplificadas</h3>
+            <p>As tabelas priorizam nome, parâmetros, retorno e efeito. Modificadores, anotações e limites genéricos extensos podem ser omitidos para facilitar a primeira leitura.</p>
+        </article>
+        <article class="card amber-card">
+            <h3 style="margin-top:0">Exemplos autocontidos</h3>
+            <p>Os fragmentos usam sintaxe do Java 25. Quando uma API é preview, isso aparece de forma explícita e a compilação exige opções especiais.</p>
+        </article>
+    </div>
+    <h3>Legenda de estabilidade</h3>
+    <div class="grid-4">
+        <div class="card"><span class="badge stable">API estável</span><p class="small" style="margin-top:9px">Parte regular do Java 25.</p></div>
+        <div class="card"><span class="badge legacy">API legada</span><p class="small" style="margin-top:9px">Disponível, porém há alternativa moderna.</p></div>
+        <div class="card"><span class="badge preview">Preview</span><p class="small" style="margin-top:9px">Exige <code>--enable-preview</code> e pode mudar.</p></div>
+        <div class="card"><span class="badge removal">Para remoção</span><p class="small" style="margin-top:9px">Descontinuada e candidata a desaparecer.</p></div>
+    </div>
+    <h3>Importação automática</h3>
+    <p>Todo arquivo-fonte Java importa implicitamente os tipos públicos de <code>java.lang</code>. Isso não inclui seus subpacotes.</p>
+    <pre class="code"><code>// Implícito em toda unidade de compilação:
+import java.lang.*;
+
+String nome = "Ana";       // nenhuma importação explícita
+Integer quantidade = 3;
+
+// Subpacotes precisam de importação:
+import java.lang.reflect.Method;
+import java.lang.foreign.MemorySegment;</code></pre>
+    <div class="callout warning"><strong>Atenção:</strong> <code>java.lang.*</code> não importa <code>java.lang.reflect.*</code>, <code>java.lang.foreign.*</code> nem qualquer outro subpacote.</div>
+
+    
+    <footer class="page-footer">
+        <span>Como usar este material</span>
+        <span class="page-number">03</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 4 — VISÃO GERAL DE JAVA.LANG -->
+<section class="page" id="visao-geral">
+    <header class="page-header">
+        <span>Pacote fundamental</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Panorama</p>
+    <h2>Visão geral de java.lang</h2>
+    
+    <p class="lead"><code>java.lang</code> reúne os tipos mais próximos da própria linguagem e da JVM. Seus contratos influenciam praticamente todo programa Java.</p>
+    <div class="grid-3" style="margin-top:17px">
+        <article class="card accent-card"><h3 style="margin-top:0">Modelo de objetos</h3><p><code>Object</code>, <code>Class</code>, <code>Record</code>, <code>Enum</code> e interfaces fundamentais.</p></article>
+        <article class="card accent-card"><h3 style="margin-top:0">Valores e texto</h3><p><code>String</code>, <code>Character</code>, wrappers numéricos, <code>Math</code> e sequências mutáveis.</p></article>
+        <article class="card accent-card"><h3 style="margin-top:0">Execução</h3><p><code>System</code>, <code>Runtime</code>, processos, threads, exceções, módulos e carregamento.</p></article>
+    </div>
+    <div class="diagram">
+        <p class="diagram-title">Mapa mental do pacote</p>
+        <div class="flow">
+            <span class="flow-node navy">Linguagem</span><span class="flow-arrow">→</span>
+            <span class="flow-node">Valores</span><span class="flow-arrow">→</span>
+            <span class="flow-node amber">Runtime</span><span class="flow-arrow">→</span>
+            <span class="flow-node">Metaprogramação</span>
+        </div>
+    </div>
+    <h3>Tipos que aparecem sem serem instanciados diretamente</h3>
+    <table class="compare-table"><thead><tr><th>Tipo</th><th>Papel</th><th>Como surge</th></tr></thead><tbody>
+        <tr><td><code>Class&lt;T&gt;</code></td><td>Representa um tipo carregado.</td><td><code>String.class</code> ou <code>obj.getClass()</code>.</td></tr>
+        <tr><td><code>Module</code></td><td>Representa um módulo em execução.</td><td><code>tipo.getModule()</code>.</td></tr>
+        <tr><td><code>Runtime</code></td><td>Interface com o ambiente da JVM.</td><td><code>Runtime.getRuntime()</code>.</td></tr>
+        <tr><td><code>ProcessHandle</code></td><td>Identifica um processo nativo.</td><td><code>ProcessHandle.current()</code>.</td></tr>
+    </tbody></table>
+    <div class="callout tip"><strong>Regra prática:</strong> comece pelos contratos de <code>Object</code> e <code>String</code>; eles explicam igualdade, hash, representação textual e boa parte do comportamento das coleções.</div>
+
+    
+    <footer class="page-footer">
+        <span>Visão geral de java.lang</span>
+        <span class="page-number">04</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 5 — OBJECT E CONTRATOS FUNDAMENTAIS -->
+<section class="page" id="object">
+    <header class="page-header">
+        <span>Hierarquia de tipos</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Raiz comum</p>
+    <h2>Object e contratos fundamentais</h2>
+    
+    <p class="lead"><code>Object</code> é a raiz da hierarquia de classes. Arrays e todas as classes herdam seus métodos, direta ou indiretamente.</p>
+    <table class="method-table"><thead><tr><th>Método</th><th>Finalidade</th><th>Cuidado</th></tr></thead><tbody>
+        <tr><td><code>boolean equals(Object o)</code></td><td>Igualdade lógica.</td><td>Deve ser reflexiva, simétrica, transitiva, consistente e retornar falso para <code>null</code>.</td></tr>
+        <tr><td><code>int hashCode()</code></td><td>Valor usado por tabelas hash.</td><td>Objetos iguais devem produzir o mesmo hash.</td></tr>
+        <tr><td><code>String toString()</code></td><td>Representação textual de diagnóstico.</td><td>Evite expor segredos ou dados pessoais.</td></tr>
+        <tr><td><code>Class&lt;?&gt; getClass()</code></td><td>Tipo concreto em runtime.</td><td>O retorno é final; use polimorfismo quando possível.</td></tr>
+    </tbody></table>
+    <h3>equals e hashCode devem caminhar juntos</h3>
+    <pre class="code"><code>public final class Usuario {
+    private final long id;
+
+    public Usuario(long id) { this.id = id; }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this == obj
+            || (obj instanceof Usuario outro &amp;&amp; id == outro.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario[id=" + id + "]";
+    }
+}</code></pre>
+    <div class="callout danger"><strong>Contrato quebrado:</strong> sobrescrever <code>equals</code> sem um <code>hashCode</code> compatível causa buscas imprevisíveis em <code>HashMap</code> e <code>HashSet</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>Object e contratos fundamentais</span>
+        <span class="page-number">05</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 6 — MONITORES, CÓPIA E FINALIZAÇÃO -->
+<section class="page" id="object-coordenacao">
+    <header class="page-header">
+        <span>Métodos herdados</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Uso avançado</p>
+    <h2>Monitores, cópia e finalização</h2>
+    
+    <h3>wait, notify e notifyAll</h3>
+    <p>Esses métodos implementam coordenação de baixo nível pelo monitor do objeto. A thread precisa possuir o monitor, normalmente dentro de <code>synchronized</code>.</p>
+    <pre class="code"><code>synchronized (fila) {
+    while (fila.isEmpty()) {     // sempre revalide a condição
+        fila.wait();
+    }
+    var item = fila.removeFirst();
+}
+
+synchronized (fila) {
+    fila.addLast(novoItem);
+    fila.notifyAll();
+}</code></pre>
+    <div class="callout tip"><strong>Prefira abstrações mais altas:</strong> <code>BlockingQueue</code>, locks, semáforos, executores e concorrência estruturada costumam expressar melhor a intenção.</div>
+    <h3>clone</h3>
+    <p><code>Object.clone()</code> faz uma cópia superficial por campos e depende da interface marcadora <code>Cloneable</code>. O modelo é frágil para invariantes, herança e campos mutáveis.</p>
+    <div class="grid-2">
+        <article class="card amber-card"><h4>Evite como padrão</h4><p><code>Cloneable</code> não declara <code>clone</code> e a cópia profunda não acontece automaticamente.</p></article>
+        <article class="card accent-card"><h4>Alternativas</h4><p>Construtor de cópia, fábrica estática, record imutável ou método com nome específico, como <code>copiarComNome</code>.</p></article>
+    </div>
+    <h3>finalize</h3>
+    <p><code>finalize()</code> está descontinuado para remoção. Sua execução é imprevisível e não serve para liberar recursos críticos.</p>
+    <div class="callout danger"><strong>Nunca dependa de finalização:</strong> use <code>try-with-resources</code> e <code>AutoCloseable</code>. Para limpeza de segurança complementar, avalie <code>Cleaner</code>, sem torná-lo o caminho principal.</div>
+
+    
+    <footer class="page-footer">
+        <span>Monitores, cópia e finalização</span>
+        <span class="page-number">06</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 7 — STRING: FUNDAMENTOS E COMPARAÇÃO -->
+<section class="page" id="string-fundamentos">
+    <header class="page-header">
+        <span>Texto imutável</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Conceitos essenciais</p>
+    <h2>String: fundamentos e comparação</h2>
+    
+    <p class="lead"><code>String</code> representa texto em UTF-16 e é imutável. Literais podem ser compartilhados pelo pool de strings.</p>
+    <div class="grid-2">
+        <article class="card accent-card"><h3 style="margin-top:0">Imutabilidade</h3><p>Métodos como <code>replace</code> e <code>toUpperCase</code> devolvem outro objeto; a string original não muda.</p></article>
+        <article class="card amber-card"><h3 style="margin-top:0">Índices</h3><p><code>length()</code>, <code>charAt</code> e <code>substring</code> trabalham com unidades UTF-16, não necessariamente com caracteres percebidos.</p></article>
+    </div>
+    <h3>== não significa conteúdo igual</h3>
+    <pre class="code"><code>String a = "java";
+String b = "ja" + "va";          // constante: pode compartilhar o literal
+String c = new String("java");
+
+System.out.println(a == b);       // true neste caso específico
+System.out.println(a == c);       // false: referências diferentes
+System.out.println(a.equals(c));  // true: mesmo conteúdo</code></pre>
+    <table class="compare-table"><thead><tr><th>Operação</th><th>O que compara</th><th>Uso</th></tr></thead><tbody>
+        <tr><td><code>==</code></td><td>Identidade das referências.</td><td>Quase nunca para conteúdo textual.</td></tr>
+        <tr><td><code>equals</code></td><td>Sequência exata de unidades.</td><td>Comparação padrão.</td></tr>
+        <tr><td><code>equalsIgnoreCase</code></td><td>Conteúdo ignorando caixa.</td><td>Não substitui regras linguísticas de todos os locais.</td></tr>
+        <tr><td><code>compareTo</code></td><td>Ordem lexicográfica.</td><td>Ordenação técnica, não linguística.</td></tr>
+    </tbody></table>
+    <div class="callout warning"><strong>Texto de usuário:</strong> ordenação e comparação sensíveis a idioma pertencem a <code>Collator</code>, em <code>java.text</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>String: fundamentos e comparação</span>
+        <span class="page-number">07</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 8 — STRING: MÉTODOS ESSENCIAIS -->
+<section class="page" id="string-metodos">
+    <header class="page-header">
+        <span>Texto imutável</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Consulta rápida</p>
+    <h2>String: métodos essenciais</h2>
+    
+    <table class="method-table"><thead><tr><th>Grupo</th><th>Métodos</th><th>Resultado</th></tr></thead><tbody>
+        <tr><td>Estado</td><td><code>length</code>, <code>isEmpty</code>, <code>isBlank</code></td><td>Tamanho e presença de conteúdo visível.</td></tr>
+        <tr><td>Acesso</td><td><code>charAt</code>, <code>codePointAt</code>, <code>substring</code>, <code>subSequence</code></td><td>Unidade, code point ou trecho.</td></tr>
+        <tr><td>Busca</td><td><code>contains</code>, <code>indexOf</code>, <code>lastIndexOf</code>, <code>startsWith</code>, <code>endsWith</code></td><td>Localização ou teste.</td></tr>
+        <tr><td>Transformação</td><td><code>strip</code>, <code>trim</code>, <code>replace</code>, <code>repeat</code>, <code>indent</code></td><td>Nova string.</td></tr>
+        <tr><td>Divisão</td><td><code>split</code>, <code>lines</code></td><td>Array ou stream de linhas.</td></tr>
+        <tr><td>Conversão</td><td><code>valueOf</code>, <code>formatted</code>, <code>toCharArray</code>, <code>getBytes</code></td><td>Representação escolhida.</td></tr>
+        <tr><td>Composição</td><td><code>join</code>, <code>concat</code>, <code>format</code></td><td>Texto combinado.</td></tr>
+    </tbody></table>
+    <pre class="code"><code>String bruto = "  Ana Silva  ";
+String nome = bruto.strip();
+
+boolean possuiSobrenome = nome.contains(" ");
+String usuario = nome.toLowerCase(java.util.Locale.ROOT)
+                     .replace(" ", ".");
+
+String mensagem = "Usuário: %s".formatted(usuario);
+long linhasUteis = texto.lines()
+                        .filter(linha -&gt; !linha.isBlank())
+                        .count();</code></pre>
+    <div class="grid-2">
+        <article class="card"><h4><code>trim()</code></h4><p>Remove apenas caracteres de controle e espaço com valor até U+0020.</p></article>
+        <article class="card accent-card"><h4><code>strip()</code></h4><p>Usa a definição Unicode de espaço em branco de <code>Character</code>.</p></article>
+    </div>
+    <div class="callout warning"><strong>split usa regex:</strong> para separar literalmente por ponto, escreva <code>split("\\.")</code> ou use <code>Pattern.quote</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>String: métodos essenciais</span>
+        <span class="page-number">08</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 9 — UNICODE, CHARACTER E CHARSEQUENCE -->
+<section class="page" id="unicode">
+    <header class="page-header">
+        <span>Texto e código</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Representação</p>
+    <h2>Unicode, Character e CharSequence</h2>
+    
+    <p class="lead">Um <code>char</code> guarda uma unidade de código UTF-16. Alguns caracteres Unicode exigem um par de <code>char</code>.</p>
+    <div class="diagram"><p class="diagram-title">Camadas de representação</p><div class="flow"><span class="flow-node navy">Glifo</span><span class="flow-arrow">→</span><span class="flow-node">Code point</span><span class="flow-arrow">→</span><span class="flow-node amber">1 ou 2 char</span></div></div>
+    <pre class="code"><code>String texto = "A😀";
+
+System.out.println(texto.length());                 // 3 unidades UTF-16
+System.out.println(texto.codePointCount(0, texto.length())); // 2 code points
+
+texto.codePoints().forEach(cp -&gt;
+    System.out.println(Character.getName(cp))
+);</code></pre>
+    <h3>Character</h3>
+    <table class="method-table"><thead><tr><th>Método</th><th>Uso</th></tr></thead><tbody>
+        <tr><td><code>isLetter</code>, <code>isDigit</code>, <code>isWhitespace</code></td><td>Classificação Unicode.</td></tr>
+        <tr><td><code>toUpperCase</code>, <code>toLowerCase</code></td><td>Mapeamento simples de um code point.</td></tr>
+        <tr><td><code>codePointAt</code>, <code>codePointCount</code></td><td>Leitura correta de code points.</td></tr>
+        <tr><td><code>toChars</code>, <code>charCount</code></td><td>Conversão para UTF-16.</td></tr>
+        <tr><td><code>getType</code>, <code>getName</code></td><td>Categoria e nome Unicode.</td></tr>
+    </tbody></table>
+    <h3>CharSequence</h3>
+    <p>É o contrato comum de <code>String</code>, <code>StringBuilder</code>, <code>StringBuffer</code> e outros textos. Aceite <code>CharSequence</code> quando o método apenas precisa ler caracteres.</p>
+    <div class="callout tip"><strong>Regra:</strong> itere com <code>codePoints()</code> quando o algoritmo trata caracteres Unicode; use índices de <code>char</code> somente quando essa unidade for intencional.</div>
+
+    
+    <footer class="page-footer">
+        <span>Unicode, Character e CharSequence</span>
+        <span class="page-number">09</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 10 — STRINGBUILDER E STRINGBUFFER -->
+<section class="page" id="builders">
+    <header class="page-header">
+        <span>Texto mutável</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Construção eficiente</p>
+    <h2>StringBuilder e StringBuffer</h2>
+    
+    <p class="lead">Use <code>StringBuilder</code> para montar texto por etapas na mesma thread. Ele mantém um buffer mutável e reduz objetos intermediários.</p>
+    <table class="compare-table"><thead><tr><th>Tipo</th><th>Mutável</th><th>Sincronizado</th><th>Escolha típica</th></tr></thead><tbody>
+        <tr><td><code>String</code></td><td>Não</td><td>Compartilhável por imutabilidade</td><td>Valor textual pronto.</td></tr>
+        <tr><td><code>StringBuilder</code></td><td>Sim</td><td>Não</td><td>Construção local e rápida.</td></tr>
+        <tr><td><code>StringBuffer</code></td><td>Sim</td><td>Sim</td><td>Compatibilidade ou buffer realmente compartilhado.</td></tr>
+    </tbody></table>
+    <pre class="code"><code>StringBuilder sql = new StringBuilder(96);
+sql.append("SELECT id, nome FROM usuario")
+   .append(" WHERE ativo = ").append(true)
+   .append(" ORDER BY nome");
+
+String consulta = sql.toString();
+
+// Inserção, exclusão e substituição também alteram o buffer:
+var b = new StringBuilder("Jva");
+b.insert(1, 'a');              // Java
+b.replace(0, 4, "JAVA");
+b.reverse();                   // AVAJ</code></pre>
+    <h3>Métodos principais</h3>
+    <p><code>append</code>, <code>insert</code>, <code>delete</code>, <code>deleteCharAt</code>, <code>replace</code>, <code>reverse</code>, <code>setCharAt</code>, <code>length</code>, <code>capacity</code>, <code>ensureCapacity</code> e <code>toString</code>.</p>
+    <div class="callout warning"><strong>Sincronização parcial não basta:</strong> várias chamadas isoladamente sincronizadas em <code>StringBuffer</code> não tornam uma operação composta automaticamente atômica.</div>
+
+    
+    <footer class="page-footer">
+        <span>StringBuilder e StringBuffer</span>
+        <span class="page-number">10</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 11 — WRAPPERS, BOXING E PARSING -->
+<section class="page" id="wrappers">
+    <header class="page-header">
+        <span>Primitivos como objetos</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Conversão e identidade</p>
+    <h2>Wrappers, boxing e parsing</h2>
+    
+    <p class="lead">Wrappers permitem representar valores primitivos como referências e participam das conversões automáticas de boxing e unboxing.</p>
+    <table class="compare-table"><thead><tr><th>Primitivo</th><th>Wrapper</th><th>Parsing</th><th>Conversão para texto</th></tr></thead><tbody>
+        <tr><td><code>boolean</code></td><td><code>Boolean</code></td><td><code>parseBoolean</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>byte</code></td><td><code>Byte</code></td><td><code>parseByte</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>short</code></td><td><code>Short</code></td><td><code>parseShort</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>int</code></td><td><code>Integer</code></td><td><code>parseInt</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>long</code></td><td><code>Long</code></td><td><code>parseLong</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>float</code></td><td><code>Float</code></td><td><code>parseFloat</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>double</code></td><td><code>Double</code></td><td><code>parseDouble</code></td><td><code>toString</code></td></tr>
+        <tr><td><code>char</code></td><td><code>Character</code></td><td>Não há parser equivalente</td><td><code>toString</code></td></tr>
+    </tbody></table>
+    <pre class="code"><code>Integer caixa = 42;       // boxing: Integer.valueOf(42)
+int valor = caixa;         // unboxing: caixa.intValue()
+
+int porta = Integer.parseInt("8080");
+Integer objeto = Integer.valueOf("8080");
+
+Integer ausente = null;
+// int n = ausente;        // NullPointerException no unboxing</code></pre>
+    <div class="callout danger"><strong>Não compare wrappers com ==:</strong> caches de instâncias podem fazer pequenos valores parecerem iguais por identidade. Use <code>equals</code> ou faça unboxing consciente.</div>
+    <div class="callout tip"><strong>Generics:</strong> coleções usam referências, portanto escreva <code>List&lt;Integer&gt;</code>, nunca <code>List&lt;int&gt;</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>Wrappers, boxing e parsing</span>
+        <span class="page-number">11</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 12 — INTEGER, LONG E OPERAÇÕES BINÁRIAS -->
+<section class="page" id="inteiros">
+    <header class="page-header">
+        <span>Wrappers numéricos</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Inteiros e bits</p>
+    <h2>Integer, Long e operações binárias</h2>
+    
+    <table class="method-table"><thead><tr><th>Finalidade</th><th>Integer / Long</th></tr></thead><tbody>
+        <tr><td>Converter texto</td><td><code>parseInt</code>, <code>parseLong</code>, <code>decode</code></td></tr>
+        <tr><td>Formatar bases</td><td><code>toBinaryString</code>, <code>toHexString</code>, <code>toOctalString</code>, <code>toString(valor, radix)</code></td></tr>
+        <tr><td>Operar sem sinal</td><td><code>compareUnsigned</code>, <code>divideUnsigned</code>, <code>remainderUnsigned</code>, <code>toUnsignedString</code></td></tr>
+        <tr><td>Examinar bits</td><td><code>bitCount</code>, <code>highestOneBit</code>, <code>numberOfLeadingZeros</code>, <code>rotateLeft</code>, <code>reverseBytes</code></td></tr>
+        <tr><td>Comparar e combinar</td><td><code>compare</code>, <code>sum</code>, <code>min</code>, <code>max</code>, <code>hashCode</code></td></tr>
+    </tbody></table>
+    <pre class="code"><code>int decimal = Integer.parseInt("101101", 2); // 45
+String hex = Integer.toHexString(255);       // "ff"
+int bitsLigados = Integer.bitCount(0b101101); // 4
+
+long unsignedMax = -1L;
+String comoSemSinal = Long.toUnsignedString(unsignedMax);
+// "18446744073709551615"</code></pre>
+    <h3>parseInt, valueOf e decode</h3>
+    <dl class="definition">
+        <dt>parseInt("42")</dt><dd>Retorna <code>int</code> e aceita uma base opcional.</dd>
+        <dt>valueOf("42")</dt><dd>Retorna <code>Integer</code> e pode reutilizar instâncias.</dd>
+        <dt>decode("0x2A")</dt><dd>Interpreta prefixos como <code>0x</code>, <code>#</code> e zero octal.</dd>
+    </dl>
+    <div class="callout warning"><strong>Overflow:</strong> operações primitivas comuns transbordam silenciosamente. Para detectar, use métodos <code>Math.*Exact</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>Integer, Long e operações binárias</span>
+        <span class="page-number">12</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 13 — FLOAT, DOUBLE E PONTO FLUTUANTE -->
+<section class="page" id="ponto-flutuante">
+    <header class="page-header">
+        <span>Wrappers numéricos</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">IEEE 754</p>
+    <h2>Float, Double e ponto flutuante</h2>
+    
+    <p class="lead"><code>float</code> e <code>double</code> seguem aritmética binária IEEE 754. Muitos valores decimais não têm representação binária exata.</p>
+    <pre class="code"><code>double total = 0.1 + 0.2;
+System.out.println(total);          // 0.30000000000000004
+System.out.println(total == 0.3);   // false
+
+double infinito = 1.0 / 0.0;
+double indefinido = 0.0 / 0.0;
+
+Double.isFinite(infinito);          // false
+Double.isInfinite(infinito);        // true
+Double.isNaN(indefinido);           // true</code></pre>
+    <table class="method-table"><thead><tr><th>Método</th><th>Uso</th></tr></thead><tbody>
+        <tr><td><code>parseDouble</code>, <code>valueOf</code></td><td>Conversão textual.</td></tr>
+        <tr><td><code>isFinite</code>, <code>isInfinite</code>, <code>isNaN</code></td><td>Classificação do valor.</td></tr>
+        <tr><td><code>compare</code></td><td>Ordem total adequada para comparação técnica.</td></tr>
+        <tr><td><code>doubleToLongBits</code>, <code>longBitsToDouble</code></td><td>Inspeção ou reconstrução da representação binária.</td></tr>
+        <tr><td><code>toHexString</code></td><td>Representação hexadecimal exata.</td></tr>
+    </tbody></table>
+    <h3>Comparação por tolerância</h3>
+    <pre class="code"><code>static boolean aproximadamente(double a, double b, double epsilon) {
+    return Math.abs(a - b) &lt;= epsilon;
+}</code></pre>
+    <div class="callout warning"><strong>Dinheiro:</strong> normalmente use <code>BigDecimal</code> com escala e arredondamento explícitos, não <code>double</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>Float, Double e ponto flutuante</span>
+        <span class="page-number">13</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 14 — MATH E STRICTMATH -->
+<section class="page" id="math">
+    <header class="page-header">
+        <span>Cálculo numérico</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Operações estáticas</p>
+    <h2>Math e StrictMath</h2>
+    
+    <table class="method-table"><thead><tr><th>Grupo</th><th>Métodos representativos</th></tr></thead><tbody>
+        <tr><td>Básicos</td><td><code>abs</code>, <code>min</code>, <code>max</code>, <code>clamp</code>, <code>signum</code>, <code>copySign</code></td></tr>
+        <tr><td>Potências</td><td><code>sqrt</code>, <code>cbrt</code>, <code>pow</code>, <code>exp</code>, <code>log</code>, <code>log10</code></td></tr>
+        <tr><td>Trigonometria</td><td><code>sin</code>, <code>cos</code>, <code>tan</code>, <code>atan2</code>, <code>toRadians</code>, <code>toDegrees</code></td></tr>
+        <tr><td>Arredondamento</td><td><code>floor</code>, <code>ceil</code>, <code>round</code>, <code>rint</code></td></tr>
+        <tr><td>Inteiros exatos</td><td><code>addExact</code>, <code>subtractExact</code>, <code>multiplyExact</code>, <code>incrementExact</code>, <code>toIntExact</code></td></tr>
+        <tr><td>Divisão</td><td><code>floorDiv</code>, <code>floorMod</code>, <code>ceilDiv</code>, <code>ceilMod</code></td></tr>
+        <tr><td>Precisão</td><td><code>fma</code>, <code>ulp</code>, <code>nextUp</code>, <code>nextDown</code>, <code>scalb</code></td></tr>
+    </tbody></table>
+    <pre class="code"><code>int soma = Math.addExact(2_000_000_000, 100_000_000);
+// ArithmeticException: overflow
+
+int pagina = Math.floorDiv(-1, 20); // -1
+int indice = Math.floorMod(-1, 20); // 19
+
+double hipotenusa = Math.hypot(3.0, 4.0); // 5.0
+double limitado = Math.clamp(12.5, 0.0, 10.0); // 10.0</code></pre>
+    <h3>Math ou StrictMath?</h3>
+    <p><code>Math</code> pode usar implementações intrínsecas e otimizadas. <code>StrictMath</code> prioriza resultados reproduzíveis conforme algoritmos bem definidos para suas operações. Para a maioria das aplicações, <code>Math</code> é a escolha natural.</p>
+    <div class="callout danger"><strong>Math.random não é criptográfico:</strong> tokens, senhas e chaves exigem <code>SecureRandom</code>.</div>
+
+    
+    <footer class="page-footer">
+        <span>Math e StrictMath</span>
+        <span class="page-number">14</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 15 — SYSTEM E IO -->
+<section class="page" id="system-io">
+    <header class="page-header">
+        <span>Ambiente de execução</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Entrada, saída e propriedades</p>
+    <h2>System e IO</h2>
+    
+    <p class="lead"><code>System</code> expõe fluxos padrão, relógios, propriedades, variáveis de ambiente e operações ligadas à JVM.</p>
+    <table class="method-table"><thead><tr><th>Recurso</th><th>Uso</th></tr></thead><tbody>
+        <tr><td><code>in</code>, <code>out</code>, <code>err</code></td><td>Entrada e saídas padrão.</td></tr>
+        <tr><td><code>currentTimeMillis()</code></td><td>Instante aproximado do relógio de parede.</td></tr>
+        <tr><td><code>nanoTime()</code></td><td>Medição monotônica de duração.</td></tr>
+        <tr><td><code>getProperty</code>, <code>setProperty</code></td><td>Propriedades do sistema.</td></tr>
+        <tr><td><code>getenv</code></td><td>Variáveis do ambiente do processo.</td></tr>
+        <tr><td><code>arraycopy</code></td><td>Cópia nativa entre arrays compatíveis.</td></tr>
+        <tr><td><code>identityHashCode</code></td><td>Hash de identidade, mesmo com sobrescrita.</td></tr>
+        <tr><td><code>getLogger</code></td><td>Logger de sistema desacoplado da implementação.</td></tr>
+    </tbody></table>
+    <pre class="code"><code>long inicio = System.nanoTime();
+executarTarefa();
+long nanos = System.nanoTime() - inicio;
+
+String javaHome = System.getProperty("java.home");
+String caminho = System.getenv("PATH");
+System.out.printf("Duração: %,d ns%n", nanos);</code></pre>
+    <h3>IO — novidade do Java 25</h3>
+    <p><code>IO</code> oferece <code>print</code>, <code>println</code> e <code>readln</code> como atalhos estáticos para programas simples orientados a linhas.</p>
+    <pre class="code"><code>String nome = IO.readln("Nome: ");
+IO.println("Olá, " + nome);</code></pre>
+    <div class="callout warning"><strong>Não misture leitores:</strong> após o primeiro <code>IO.readln</code>, o uso posterior de outras técnicas sobre <code>System.in</code> tem comportamento não especificado.</div>
+
+    
+    <footer class="page-footer">
+        <span>System e IO</span>
+        <span class="page-number">15</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 16 — RUNTIME E VERSÕES -->
+<section class="page" id="runtime">
+    <header class="page-header">
+        <span>Ambiente de execução</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">JVM e encerramento</p>
+    <h2>Runtime e versões</h2>
+    
+    <p class="lead">Cada aplicação possui uma instância de <code>Runtime</code>, obtida por <code>Runtime.getRuntime()</code>.</p>
+    <table class="method-table"><thead><tr><th>Método</th><th>O que informa ou faz</th></tr></thead><tbody>
+        <tr><td><code>availableProcessors()</code></td><td>Quantidade de processadores disponível para a JVM.</td></tr>
+        <tr><td><code>maxMemory()</code></td><td>Limite estimado de memória que a JVM tentará usar.</td></tr>
+        <tr><td><code>totalMemory()</code>, <code>freeMemory()</code></td><td>Estado do heap atualmente reservado.</td></tr>
+        <tr><td><code>addShutdownHook(Thread)</code></td><td>Registra tarefa para encerramento normal da JVM.</td></tr>
+        <tr><td><code>version()</code></td><td>Versão da plataforma em execução.</td></tr>
+        <tr><td><code>gc()</code></td><td>Sugere coleta; não garante execução imediata.</td></tr>
+    </tbody></table>
+    <pre class="code"><code>Runtime runtime = Runtime.getRuntime();
+Runtime.Version versao = Runtime.version();
+
+System.out.println(versao.feature()); // versão principal
+System.out.println(versao);           // representação completa
+System.out.println(runtime.availableProcessors());
+
+runtime.addShutdownHook(new Thread(() -&gt;
+    System.out.println("Encerrando...")
+));</code></pre>
+    <h3>Encerramento</h3>
+    <p><code>System.exit(status)</code> inicia o encerramento e executa hooks registrados. <code>Runtime.halt(status)</code> termina abruptamente, sem hooks; é uma ferramenta extrema.</p>
+    <div class="callout warning"><strong>Métricas de memória são instantâneas:</strong> não representam uma reserva garantida nem substituem ferramentas de observabilidade da JVM.</div>
+
+    
+    <footer class="page-footer">
+        <span>Runtime e versões</span>
+        <span class="page-number">16</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 17 — PROCESSBUILDER, PROCESS E PROCESSHANDLE -->
+<section class="page" id="processos">
+    <header class="page-header">
+        <span>Integração com o SO</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Processos nativos</p>
+    <h2>ProcessBuilder, Process e ProcessHandle</h2>
+    
+    <p class="lead"><code>ProcessBuilder</code> configura e inicia programas externos. <code>Process</code> controla a instância iniciada; <code>ProcessHandle</code> oferece identidade e informações.</p>
+    <pre class="code"><code>ProcessBuilder builder = new ProcessBuilder("java", "--version");
+builder.redirectErrorStream(true);
+
+Process processo = builder.start();
+String saida;
+try (var leitor = processo.inputReader()) {
+    saida = leitor.lines().collect(java.util.stream.Collectors.joining("
+"));
+}
+
+int codigo = processo.waitFor();
+System.out.println(codigo + ": " + saida);</code></pre>
+    <table class="method-table"><thead><tr><th>Tipo</th><th>Métodos importantes</th></tr></thead><tbody>
+        <tr><td><code>ProcessBuilder</code></td><td><code>command</code>, <code>directory</code>, <code>environment</code>, <code>redirectInput</code>, <code>redirectOutput</code>, <code>start</code>, <code>startPipeline</code></td></tr>
+        <tr><td><code>Process</code></td><td><code>pid</code>, <code>isAlive</code>, <code>waitFor</code>, <code>onExit</code>, <code>destroy</code>, <code>destroyForcibly</code>, <code>inputReader</code></td></tr>
+        <tr><td><code>ProcessHandle</code></td><td><code>current</code>, <code>of</code>, <code>info</code>, <code>children</code>, <code>descendants</code>, <code>onExit</code></td></tr>
+    </tbody></table>
+    <div class="callout danger"><strong>Evite montar uma linha de shell com entrada externa:</strong> passe cada argumento como elemento separado. A sintaxe e a segurança mudam entre sistemas operacionais.</div>
+    <div class="callout tip"><strong>Evite bloqueio:</strong> consuma stdout e stderr, redirecione-os ou una os fluxos; buffers cheios podem impedir o processo de avançar.</div>
+
+    
+    <footer class="page-footer">
+        <span>ProcessBuilder, Process e ProcessHandle</span>
+        <span class="page-number">17</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 18 — THREAD: EXECUÇÃO E INTERRUPÇÃO -->
+<section class="page" id="threads">
+    <header class="page-header">
+        <span>Concorrência fundamental</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Ciclo de vida</p>
+    <h2>Thread: execução e interrupção</h2>
+    
+    <p class="lead"><code>Thread</code> representa uma linha de execução. Inicie com <code>start()</code>. Em uma platform thread, chamar <code>run()</code> diretamente apenas executa a tarefa no thread atual; em uma virtual thread, a chamada direta a <code>run()</code> não executa a tarefa.</p>
+    <div class="diagram"><p class="diagram-title">Estados observáveis</p><div class="flow"><span class="flow-node navy">NEW</span><span class="flow-arrow">→</span><span class="flow-node">RUNNABLE</span><span class="flow-arrow">→</span><span class="flow-node amber">WAIT/BLOCK</span><span class="flow-arrow">→</span><span class="flow-node">TERMINATED</span></div></div>
+    <pre class="code"><code>Thread tarefa = new Thread(() -&gt; {
+    while (!Thread.currentThread().isInterrupted()) {
+        trabalharUmPasso();
+    }
+}, "processador");
+
+tarefa.start();
+tarefa.interrupt();
+tarefa.join();</code></pre>
+    <table class="method-table"><thead><tr><th>Método</th><th>Significado</th></tr></thead><tbody>
+        <tr><td><code>start</code></td><td>Agenda a execução uma única vez.</td></tr>
+        <tr><td><code>join</code></td><td>Espera o término.</td></tr>
+        <tr><td><code>interrupt</code></td><td>Solicita cooperação para cancelamento/desbloqueio.</td></tr>
+        <tr><td><code>isInterrupted</code></td><td>Consulta o sinal sem limpá-lo.</td></tr>
+        <tr><td><code>Thread.interrupted</code></td><td>Consulta e limpa o sinal do thread atual.</td></tr>
+        <tr><td><code>sleep</code></td><td>Pausa o thread atual pelo período indicado.</td></tr>
+    </tbody></table>
+    <pre class="code"><code>try {
+    fila.put(item);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt(); // restaura o sinal
+    return;
+}</code></pre>
+    <div class="callout danger"><strong>Não use <code>stop</code>, <code>suspend</code> ou <code>resume</code>:</strong> são APIs inseguras e descontinuadas.</div>
+
+    
+    <footer class="page-footer">
+        <span>Thread: execução e interrupção</span>
+        <span class="page-number">18</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 19 — BUILDERS E VIRTUAL THREADS -->
+<section class="page" id="virtual-threads">
+    <header class="page-header">
+        <span>Concorrência moderna</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Threads leves</p>
+    <h2>Builders e virtual threads</h2>
+    
+    <p class="lead">Virtual threads são threads gerenciadas pela JVM, adequadas a grandes quantidades de tarefas concorrentes que passam boa parte do tempo bloqueadas em I/O.</p>
+    <div class="grid-2">
+        <article class="card accent-card"><h3 style="margin-top:0">Virtual</h3><p>Grande escala, uma thread por tarefa, bloqueio simples de ler. Não são destinadas a acelerar cálculo intensivo.</p></article>
+        <article class="card amber-card"><h3 style="margin-top:0">Plataforma</h3><p>Relacionadas a threads do sistema operacional. Úteis quando identidade, afinidade ou controle específico importa.</p></article>
+    </div>
+    <pre class="code"><code>Thread.ofVirtual()
+      .name("consulta-", 0)
+      .start(() -&gt; consultarServico());
+
+Thread.ofPlatform()
+      .name("monitor")
+      .daemon(true)
+      .start(() -&gt; monitorar());
+
+Thread simples = Thread.startVirtualThread(() -&gt; executar());</code></pre>
+    <h3>ThreadFactory</h3>
+    <pre class="code"><code>java.util.concurrent.ThreadFactory factory =
+    Thread.ofVirtual().name("worker-", 0).factory();
+
+try (var executor = java.util.concurrent.Executors
+        .newThreadPerTaskExecutor(factory)) {
+    executor.submit(() -&gt; chamadaBloqueante());
+}</code></pre>
+    <ul class="check-list">
+        <li>Limite o recurso externo — conexões, requisições ou arquivos — não o número de virtual threads.</li>
+        <li>Evite manter bloqueios longos em regiões <code>synchronized</code> durante I/O.</li>
+        <li>Use executores e escopos para administrar tarefas, em vez de armazenar threads manualmente.</li>
+    </ul>
+
+    
+    <footer class="page-footer">
+        <span>Builders e virtual threads</span>
+        <span class="page-number">19</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 20 — THREADLOCAL, SCOPEDVALUE E STABLEVALUE -->
+<section class="page" id="contexto">
+    <header class="page-header">
+        <span>Dados associados à execução</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Escopo e inicialização</p>
+    <h2>ThreadLocal, ScopedValue e StableValue</h2>
+    
+    <table class="compare-table"><thead><tr><th>API</th><th>Modelo</th><th>Estado no Java 25</th></tr></thead><tbody>
+        <tr><td><code>ThreadLocal&lt;T&gt;</code></td><td>Valor mutável associado a cada thread.</td><td><span class="badge stable">Estável</span></td></tr>
+        <tr><td><code>ScopedValue&lt;T&gt;</code></td><td>Binding imutável dentro de um escopo dinâmico.</td><td><span class="badge stable">Estável no Java 25</span></td></tr>
+        <tr><td><code>StableValue&lt;T&gt;</code></td><td>Conteúdo definido no máximo uma vez; inicialização preguiçosa.</td><td><span class="badge preview">Preview</span></td></tr>
+    </tbody></table>
+    <pre class="code"><code>private static final ThreadLocal&lt;String&gt; TRACE =
+    ThreadLocal.withInitial(() -&gt; "sem-trace");
+
+try {
+    TRACE.set("req-123");
+    processar();
+} finally {
+    TRACE.remove();             // essencial em threads reutilizadas
+}</code></pre>
+    <pre class="code"><code>private static final ScopedValue&lt;String&gt; USUARIO =
+    ScopedValue.newInstance();
+
+ScopedValue.where(USUARIO, "ana").run(() -&gt; {
+    auditar(USUARIO.get());
+});
+// fora do bloco, USUARIO volta a ficar sem binding</code></pre>
+    <pre class="code"><code>// Preview no Java 25
+private final StableValue&lt;Cliente&gt; cliente = StableValue.of();
+
+Cliente obter() {
+    return cliente.orElseSet(this::carregarCliente);
+}</code></pre>
+    <div class="callout warning"><strong>StableValue é preview:</strong> compile e execute com <code>--enable-preview --release 25</code>. Não o trate como contrato definitivo.</div>
+
+    
+    <footer class="page-footer">
+        <span>ThreadLocal, ScopedValue e StableValue</span>
+        <span class="page-number">20</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 21 — THROWABLE E HIERARQUIA DE FALHAS -->
+<section class="page" id="throwable">
+    <header class="page-header">
+        <span>Modelo de falhas</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Hierarquia</p>
+    <h2>Throwable e hierarquia de falhas</h2>
+    
+    <div class="tree">
+        <div class="tree-level"><span class="tree-node root">Throwable</span></div>
+        <div class="tree-link">↓</div>
+        <div class="tree-level"><span class="tree-node">Error</span><span class="tree-node special">Exception</span></div>
+        <div class="tree-link">↓</div>
+        <div class="tree-level"><span class="tree-node">Falhas graves</span><span class="tree-node">Checked</span><span class="tree-node special">RuntimeException</span></div>
+    </div>
+    <dl class="definition">
+        <dt>Error</dt><dd>Problemas graves de ambiente, linkage ou JVM. Código comum geralmente não tenta recuperá-los.</dd>
+        <dt>Checked exception</dt><dd>Subclasse de <code>Exception</code> que não deriva de <code>RuntimeException</code>; deve ser capturada ou declarada.</dd>
+        <dt>Unchecked exception</dt><dd><code>RuntimeException</code> e descendentes; costuma indicar argumento inválido, estado incorreto ou erro de programação.</dd>
+    </dl>
+    <table class="method-table"><thead><tr><th>Throwable</th><th>Finalidade</th></tr></thead><tbody>
+        <tr><td><code>getMessage</code></td><td>Mensagem destinada ao diagnóstico.</td></tr>
+        <tr><td><code>getCause</code>, <code>initCause</code></td><td>Cadeia causal.</td></tr>
+        <tr><td><code>getSuppressed</code>, <code>addSuppressed</code></td><td>Falhas secundárias, comuns no fechamento de recursos.</td></tr>
+        <tr><td><code>getStackTrace</code>, <code>printStackTrace</code></td><td>Quadros de execução capturados.</td></tr>
+    </tbody></table>
+    <div class="callout tip"><strong>Preserve a causa:</strong> ao traduzir uma exceção entre camadas, passe a exceção original ao construtor.</div>
+
+    
+    <footer class="page-footer">
+        <span>Throwable e hierarquia de falhas</span>
+        <span class="page-number">21</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 22 — EXCEÇÕES: DESENHO E TRATAMENTO -->
+<section class="page" id="exceptions">
+    <header class="page-header">
+        <span>Modelo de falhas</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Boas práticas</p>
+    <h2>Exceções: desenho e tratamento</h2>
+    
+    <pre class="code"><code>public final class ConfiguracaoException extends Exception {
+    public ConfiguracaoException(String mensagem, Throwable causa) {
+        super(mensagem, causa);
+    }
+}
+
+static Config carregar(java.nio.file.Path arquivo)
+        throws ConfiguracaoException {
+    try {
+        return lerConfig(arquivo);
+    } catch (java.io.IOException e) {
+        throw new ConfiguracaoException(
+            "Não foi possível ler " + arquivo, e);
+    }
+}</code></pre>
+    <h3>Try-with-resources</h3>
+    <pre class="code"><code>try (var leitor = java.nio.file.Files.newBufferedReader(caminho)) {
+    return leitor.readLine();
+} // close() é chamado mesmo se houver exceção</code></pre>
+    <p>O recurso deve implementar <code>AutoCloseable</code>. Se o bloco e <code>close()</code> falharem, a falha de fechamento fica suprimida na exceção principal.</p>
+    <ul class="check-list">
+        <li>Capture apenas exceções que a camada consegue tratar ou traduzir.</li>
+        <li>Não use <code>catch (Exception)</code> como forma de ignorar falhas.</li>
+        <li>Mensagens devem explicar operação e contexto, sem revelar segredos.</li>
+        <li>Não use exceções como fluxo normal de um caminho frequente.</li>
+        <li>Ao capturar <code>InterruptedException</code>, propague ou restaure a interrupção.</li>
+    </ul>
+    <div class="callout danger"><strong>Não capture Throwable:</strong> isso também intercepta <code>Error</code>, podendo esconder falhas que a aplicação não consegue resolver.</div>
+
+    
+    <footer class="page-footer">
+        <span>Exceções: desenho e tratamento</span>
+        <span class="page-number">22</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 23 — CLASS E TIPOS EM TEMPO DE EXECUÇÃO -->
+<section class="page" id="class">
+    <header class="page-header">
+        <span>Metadados em runtime</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Tipos carregados</p>
+    <h2>Class e tipos em tempo de execução</h2>
+    
+    <p class="lead">Cada tipo carregado é representado por um objeto <code>Class</code>. O parâmetro genérico ajuda a manter casts e criação reflexiva mais seguros.</p>
+    <pre class="code"><code>Class&lt;String&gt; texto = String.class;
+Class&lt;?&gt; runtime = "abc".getClass();
+Class&lt;?&gt; dinamica = Class.forName("java.lang.String");
+
+boolean ok = Number.class.isAssignableFrom(Integer.class); // true
+String valor = texto.cast(new String("Java"));
+
+System.out.println(texto.getName());          // java.lang.String
+System.out.println(texto.getSimpleName());    // String
+System.out.println(texto.getModule().getName()); // java.base</code></pre>
+    <table class="method-table"><thead><tr><th>Grupo</th><th>Métodos</th></tr></thead><tbody>
+        <tr><td>Identidade</td><td><code>getName</code>, <code>getSimpleName</code>, <code>getCanonicalName</code>, <code>descriptorString</code></td></tr>
+        <tr><td>Relações</td><td><code>getSuperclass</code>, <code>getInterfaces</code>, <code>isAssignableFrom</code>, <code>isInstance</code>, <code>cast</code></td></tr>
+        <tr><td>Natureza</td><td><code>isArray</code>, <code>isPrimitive</code>, <code>isEnum</code>, <code>isRecord</code>, <code>isSealed</code>, <code>isAnnotation</code></td></tr>
+        <tr><td>Membros</td><td><code>getMethods</code>, <code>getDeclaredMethods</code>, <code>getFields</code>, <code>getDeclaredConstructors</code></td></tr>
+        <tr><td>Contexto</td><td><code>getModule</code>, <code>getPackage</code>, <code>getClassLoader</code>, <code>getProtectionDomain</code></td></tr>
+    </tbody></table>
+    <div class="callout warning"><strong>Class.forName pode inicializar a classe:</strong> para controle explícito, use a sobrecarga com <code>initialize</code> e um class loader.</div>
+
+    
+    <footer class="page-footer">
+        <span>Class e tipos em tempo de execução</span>
+        <span class="page-number">23</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 24 — JAVA.LANG.REFLECT -->
+<section class="page" id="reflection">
+    <header class="page-header">
+        <span>Subpacote principal</span>
+        <span>java.lang.reflect</span>
+    </header>
+    <span class="package-name">java.lang.reflect</span>
+    <p class="eyebrow">Metaprogramação</p>
+    <h2>java.lang.reflect</h2>
+    
+    <p class="lead">Reflexão inspeciona e, quando permitido, acessa classes, métodos, campos e construtores em tempo de execução.</p>
+    <table class="compare-table"><thead><tr><th>Tipo</th><th>Representa</th></tr></thead><tbody>
+        <tr><td><code>Method</code></td><td>Método e sua invocação.</td></tr>
+        <tr><td><code>Field</code></td><td>Campo e acesso ao valor.</td></tr>
+        <tr><td><code>Constructor&lt;T&gt;</code></td><td>Construtor e criação de instância.</td></tr>
+        <tr><td><code>Parameter</code></td><td>Parâmetro formal de método ou construtor.</td></tr>
+        <tr><td><code>RecordComponent</code></td><td>Componente declarado por um record.</td></tr>
+        <tr><td><code>Modifier</code></td><td>Interpretação de modificadores.</td></tr>
+        <tr><td><code>Proxy</code></td><td>Implementação dinâmica de interfaces.</td></tr>
+        <tr><td><code>Array</code></td><td>Criação e acesso reflexivo a arrays.</td></tr>
+    </tbody></table>
+    <pre class="code"><code>Class&lt;?&gt; tipo = Class.forName("com.exemplo.Servico");
+var construtor = tipo.getDeclaredConstructor();
+Object instancia = construtor.newInstance();
+
+var metodo = tipo.getMethod("executar", String.class);
+Object retorno = metodo.invoke(instancia, "entrada");</code></pre>
+    <h3>Público x declarado</h3>
+    <p><code>getMethods()</code> inclui membros públicos herdados. <code>getDeclaredMethods()</code> limita-se aos declarados diretamente, independentemente da visibilidade.</p>
+    <div class="callout danger"><strong>Encapsulamento forte:</strong> <code>setAccessible(true)</code> não garante acesso através de módulos. Prefira APIs públicas, <code>trySetAccessible</code> quando apropriado e abertura explícita do módulo quando o desenho realmente exigir.</div>
+
+    
+    <footer class="page-footer">
+        <span>java.lang.reflect</span>
+        <span class="page-number">24</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 25 — CLASSLOADER, MODULE E PACKAGE -->
+<section class="page" id="loading-modules">
+    <header class="page-header">
+        <span>Runtime modular</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Carregamento e identidade</p>
+    <h2>ClassLoader, Module e Package</h2>
+    
+    <div class="grid-3">
+        <article class="card accent-card"><h3 style="margin-top:0">ClassLoader</h3><p>Localiza definições de classes e cria sua identidade junto com o nome binário.</p></article>
+        <article class="card accent-card"><h3 style="margin-top:0">Module</h3><p>Representa limites de leitura, exportação, abertura e serviços em runtime.</p></article>
+        <article class="card accent-card"><h3 style="margin-top:0">Package</h3><p>Expõe metadados do pacote associado ao carregador.</p></article>
+    </div>
+    <pre class="code"><code>Class&lt;?&gt; tipo = MinhaClasse.class;
+ClassLoader loader = tipo.getClassLoader(); // null pode indicar bootstrap loader
+Module modulo = tipo.getModule();
+Package pacote = tipo.getPackage();
+
+System.out.println(modulo.isNamed());
+System.out.println(modulo.getName());
+System.out.println(pacote.getName());</code></pre>
+    <h3>Identidade de classe</h3>
+    <p>Em termos práticos, o nome binário e o class loader participam da identidade. Duas classes com o mesmo nome, carregadas por loaders diferentes, são tipos diferentes.</p>
+    <table class="method-table"><thead><tr><th>API</th><th>Métodos centrais</th></tr></thead><tbody>
+        <tr><td><code>ClassLoader</code></td><td><code>loadClass</code>, <code>getResource</code>, <code>getResources</code>, <code>getParent</code>, <code>getPlatformClassLoader</code></td></tr>
+        <tr><td><code>Module</code></td><td><code>getName</code>, <code>isNamed</code>, <code>canRead</code>, <code>isExported</code>, <code>isOpen</code>, <code>getLayer</code></td></tr>
+        <tr><td><code>Package</code></td><td><code>getName</code>, <code>getSpecificationVersion</code>, <code>getImplementationVersion</code>, <code>isSealed</code></td></tr>
+    </tbody></table>
+    <div class="callout warning"><strong>Evite definir class loaders sem necessidade:</strong> delegação, descarregamento, recursos e módulos tornam essa área sensível a vazamentos e incompatibilidades.</div>
+
+    
+    <footer class="page-footer">
+        <span>ClassLoader, Module e Package</span>
+        <span class="page-number">25</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 26 — RECORD, ENUM E TIPOS ESPECIAIS -->
+<section class="page" id="records-enums">
+    <header class="page-header">
+        <span>Tipos especiais da linguagem</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Bases implícitas</p>
+    <h2>Record, Enum e tipos especiais</h2>
+    
+    <h3>Records</h3>
+    <p>Todo record herda implicitamente de <code>java.lang.Record</code>. O compilador fornece acessores, construtor canônico, <code>equals</code>, <code>hashCode</code> e <code>toString</code> baseados nos componentes.</p>
+    <pre class="code"><code>record Ponto(int x, int y) {
+    Ponto {
+        if (x &lt; 0 || y &lt; 0) {
+            throw new IllegalArgumentException("coordenada negativa");
+        }
+    }
+}
+
+var p = new Ponto(2, 3);
+System.out.println(p.x());</code></pre>
+    <h3>Enums</h3>
+    <pre class="code"><code>enum Status {
+    PENDENTE, PROCESSANDO, CONCLUIDO;
+
+    boolean finalizado() {
+        return this == CONCLUIDO;
+    }
+}
+
+Status s = Enum.valueOf(Status.class, "PENDENTE");
+String nome = s.name();</code></pre>
+    <table class="method-table"><thead><tr><th>Enum</th><th>Uso</th></tr></thead><tbody>
+        <tr><td><code>name()</code></td><td>Nome exato declarado; estável somente se o nome fizer parte do contrato.</td></tr>
+        <tr><td><code>ordinal()</code></td><td>Posição interna; não use para persistência ou protocolo.</td></tr>
+        <tr><td><code>compareTo</code></td><td>Compara pela ordem declarada.</td></tr>
+        <tr><td><code>getDeclaringClass</code></td><td>Tipo enum que declara a constante.</td></tr>
+    </tbody></table>
+    <div class="callout tip"><strong>Modelagem:</strong> records são ótimos para valores transparentes; enums, para conjuntos fechados de constantes com comportamento.</div>
+
+    
+    <footer class="page-footer">
+        <span>Record, Enum e tipos especiais</span>
+        <span class="page-number">26</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 27 — INTERFACES E ANOTAÇÕES FUNDAMENTAIS -->
+<section class="page" id="interfaces">
+    <header class="page-header">
+        <span>Contratos universais</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Interfaces e metadados</p>
+    <h2>Interfaces e anotações fundamentais</h2>
+    
+    <table class="compare-table"><thead><tr><th>Interface</th><th>Contrato</th></tr></thead><tbody>
+        <tr><td><code>Comparable&lt;T&gt;</code></td><td>Ordem natural por <code>compareTo</code>.</td></tr>
+        <tr><td><code>Iterable&lt;T&gt;</code></td><td>Permite <code>for-each</code> por <code>iterator()</code>.</td></tr>
+        <tr><td><code>AutoCloseable</code></td><td>Recurso fechável por <code>close()</code> e try-with-resources.</td></tr>
+        <tr><td><code>Runnable</code></td><td>Operação sem argumento e sem resultado.</td></tr>
+        <tr><td><code>CharSequence</code></td><td>Sequência legível de caracteres.</td></tr>
+        <tr><td><code>Appendable</code></td><td>Destino que aceita caracteres.</td></tr>
+        <tr><td><code>Readable</code></td><td>Fonte que fornece caracteres.</td></tr>
+        <tr><td><code>Cloneable</code></td><td>Marcador reconhecido por <code>Object.clone()</code>.</td></tr>
+    </tbody></table>
+    <h3>Anotações de java.lang</h3>
+    <table class="method-table"><thead><tr><th>Anotação</th><th>Intenção</th></tr></thead><tbody>
+        <tr><td><code>@Override</code></td><td>Solicita verificação de sobrescrita pelo compilador.</td></tr>
+        <tr><td><code>@Deprecated</code></td><td>Marca elemento desencorajado; pode indicar <code>since</code> e <code>forRemoval</code>.</td></tr>
+        <tr><td><code>@SuppressWarnings</code></td><td>Suprime categorias específicas de avisos no menor escopo possível.</td></tr>
+        <tr><td><code>@SafeVarargs</code></td><td>Afirma segurança de um varargs genérico em locais permitidos.</td></tr>
+        <tr><td><code>@FunctionalInterface</code></td><td>Declara a intenção de ter um único método abstrato funcional.</td></tr>
+    </tbody></table>
+    <div class="callout warning"><strong>SuppressWarnings não corrige o problema:</strong> documente a razão e restrinja a supressão à menor região possível.</div>
+
+    
+    <footer class="page-footer">
+        <span>Interfaces e anotações fundamentais</span>
+        <span class="page-number">27</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 28 — STACKWALKER E DIAGNÓSTICO -->
+<section class="page" id="stackwalker">
+    <header class="page-header">
+        <span>Diagnóstico controlado</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Pilha de execução</p>
+    <h2>StackWalker e diagnóstico</h2>
+    
+    <p class="lead"><code>StackWalker</code> percorre quadros da pilha de forma preguiçosa e configurável, evitando materializar tudo quando poucos quadros bastam.</p>
+    <pre class="code"><code>private static final StackWalker WALKER =
+    StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+
+static String chamador() {
+    return WALKER.walk(frames -&gt; frames
+        .skip(1)
+        .findFirst()
+        .map(f -&gt; f.getDeclaringClass().getName()
+                + "#" + f.getMethodName())
+        .orElse("desconhecido"));
+}</code></pre>
+    <table class="method-table"><thead><tr><th>Opção</th><th>Efeito</th></tr></thead><tbody>
+        <tr><td><code>RETAIN_CLASS_REFERENCE</code></td><td>Permite obter <code>Class</code> do quadro.</td></tr>
+        <tr><td><code>SHOW_REFLECT_FRAMES</code></td><td>Inclui quadros de reflexão.</td></tr>
+        <tr><td><code>SHOW_HIDDEN_FRAMES</code></td><td>Inclui quadros ocultos de implementação.</td></tr>
+    </tbody></table>
+    <h3>walk x forEach</h3>
+    <p><code>walk</code> recebe um stream válido somente durante a chamada e devolve um resultado. <code>forEach</code> visita os quadros diretamente. Não deixe objetos <code>StackFrame</code> escaparem para uso posterior sem necessidade.</p>
+    <div class="callout warning"><strong>Custo e privacidade:</strong> pilhas são úteis para diagnóstico, mas podem ser caras e revelar detalhes internos. Não as exponha integralmente a clientes.</div>
+
+    
+    <footer class="page-footer">
+        <span>StackWalker e diagnóstico</span>
+        <span class="page-number">28</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 29 — PRINCIPAIS SUBPACOTES DE JAVA.LANG -->
+<section class="page" id="subpacotes">
+    <header class="page-header">
+        <span>Ecossistema java.lang</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Mapa de aprofundamento</p>
+    <h2>Principais subpacotes de java.lang</h2>
+    
+    <p class="lead">Subpacotes não são importados automaticamente. Muitos oferecem recursos de baixo nível ou infraestrutura para ferramentas e frameworks.</p>
+    <table class="index-table"><thead><tr><th>Pacote</th><th>Finalidade</th><th>APIs de entrada</th></tr></thead><tbody>
+        <tr><td><code>java.lang.annotation</code></td><td>Metamodelo de anotações.</td><td><code>Retention</code>, <code>Target</code>, <code>ElementType</code>, <code>Annotation</code></td></tr>
+        <tr><td><code>java.lang.classfile</code></td><td>Leitura, geração e transformação de arquivos <code>.class</code>.</td><td><code>ClassFile</code>, modelos e builders</td></tr>
+        <tr><td><code>java.lang.constant</code></td><td>Descritores nominais de classes, métodos e constantes.</td><td><code>ClassDesc</code>, <code>MethodTypeDesc</code>, <code>ConstantDesc</code></td></tr>
+        <tr><td><code>java.lang.foreign</code></td><td>Memória externa e chamadas a funções nativas.</td><td><code>MemorySegment</code>, <code>Arena</code>, <code>Linker</code>, <code>MemoryLayout</code></td></tr>
+        <tr><td><code>java.lang.invoke</code></td><td>Method handles, call sites e operações dinâmicas da JVM.</td><td><code>MethodHandle</code>, <code>MethodHandles</code>, <code>VarHandle</code></td></tr>
+        <tr><td><code>java.lang.module</code></td><td>Descritores e resolução do sistema de módulos.</td><td><code>ModuleDescriptor</code>, <code>Configuration</code>, <code>ModuleFinder</code></td></tr>
+        <tr><td><code>java.lang.ref</code></td><td>Referências com interação limitada com o coletor.</td><td><code>WeakReference</code>, <code>SoftReference</code>, <code>PhantomReference</code>, <code>ReferenceQueue</code></td></tr>
+        <tr><td><code>java.lang.reflect</code></td><td>Reflexão de classes e objetos.</td><td><code>Method</code>, <code>Field</code>, <code>Constructor</code>, <code>Proxy</code></td></tr>
+        <tr><td><code>java.lang.runtime</code></td><td>Suporte de baixo nível a recursos da linguagem.</td><td>Bootstraps usados pelo compilador e runtime</td></tr>
+    </tbody></table>
+    <div class="callout danger"><strong>Baixo nível:</strong> <code>foreign</code>, <code>invoke</code>, <code>classfile</code> e <code>runtime</code> exigem contratos precisos. Não são substitutos gerais para APIs de aplicação mais simples.</div>
+
+    
+    <footer class="page-footer">
+        <span>Principais subpacotes de java.lang</span>
+        <span class="page-number">29</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 30 — ÍNDICE DE APIS E MÉTODOS -->
+<section class="page" id="indice">
+    <header class="page-header">
+        <span>Consulta rápida</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Índice remissivo</p>
+    <h2>Índice de APIs e métodos</h2>
+    
+    <table class="index-table"><thead><tr><th>Quero…</th><th>Use primeiro</th></tr></thead><tbody>
+        <tr><td>Comparar objetos por valor</td><td><code>equals</code> e <code>hashCode</code></td></tr>
+        <tr><td>Comparar textos</td><td><code>String.equals</code>; <code>Collator</code> para regras linguísticas</td></tr>
+        <tr><td>Montar texto em laço</td><td><code>StringBuilder.append</code></td></tr>
+        <tr><td>Converter texto em número</td><td><code>Integer.parseInt</code>, <code>Long.parseLong</code>, <code>Double.parseDouble</code></td></tr>
+        <tr><td>Detectar overflow inteiro</td><td><code>Math.addExact</code>, <code>multiplyExact</code>, <code>toIntExact</code></td></tr>
+        <tr><td>Medir duração</td><td><code>System.nanoTime</code></td></tr>
+        <tr><td>Ler uma linha em programa simples</td><td><code>IO.readln</code></td></tr>
+        <tr><td>Executar processo externo</td><td><code>ProcessBuilder</code></td></tr>
+        <tr><td>Criar uma virtual thread</td><td><code>Thread.ofVirtual</code> ou <code>startVirtualThread</code></td></tr>
+        <tr><td>Transmitir contexto imutável</td><td><code>ScopedValue</code></td></tr>
+        <tr><td>Fechar recursos com segurança</td><td><code>AutoCloseable</code> + try-with-resources</td></tr>
+        <tr><td>Inspecionar tipo em runtime</td><td><code>Class&lt;?&gt;</code></td></tr>
+        <tr><td>Invocar método dinamicamente</td><td><code>java.lang.reflect.Method</code>; <code>MethodHandle</code> em infraestrutura avançada</td></tr>
+        <tr><td>Percorrer a pilha</td><td><code>StackWalker</code></td></tr>
+    </tbody></table>
+    <h3>Armadilhas para revisar</h3>
+    <ul class="check-list">
+        <li><code>==</code> não compara o conteúdo de objetos.</li>
+        <li>Um code point Unicode pode ocupar dois índices de <code>String</code>.</li>
+        <li>Unboxing de wrapper nulo lança <code>NullPointerException</code>.</li>
+        <li>Interrupção é cooperação; não é encerramento forçado.</li>
+        <li>Reflexão não elimina as fronteiras de módulos.</li>
+        <li><code>System.gc()</code> é apenas uma sugestão.</li>
+    </ul>
+
+    
+    <footer class="page-footer">
+        <span>Índice de APIs e métodos</span>
+        <span class="page-number">30</span>
+    </footer>
+</section>
+
+<!-- PÁGINA 31 — REFERÊNCIAS E CHECKLIST -->
+<section class="page" id="referencias">
+    <header class="page-header">
+        <span>Fechamento</span>
+        <span>java.lang</span>
+    </header>
+    <span class="package-name">java.lang</span>
+    <p class="eyebrow">Fontes e revisão</p>
+    <h2>Referências e checklist</h2>
+    
+    <h3>Referências oficiais</h3>
+    <ul>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/package-summary.html">Java 25 API — java.lang</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html">Java 25 API — String</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Thread.html">Java 25 API — Thread</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/ScopedValue.html">Java 25 API — ScopedValue</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/StableValue.html">Java 25 API — StableValue (preview)</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/reflect/package-summary.html">Java 25 API — java.lang.reflect</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/foreign/package-summary.html">Java 25 API — java.lang.foreign</a></li>
+        <li><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/classfile/package-summary.html">Java 25 API — java.lang.classfile</a></li>
+        <li><a href="https://docs.oracle.com/javase/specs/jls/se25/html/index.html">Java Language Specification — Java SE 25</a></li>
+        <li><a href="https://docs.oracle.com/javase/specs/jvms/se25/html/index.html">Java Virtual Machine Specification — Java SE 25</a></li>
+    </ul>
+    <h3>Checklist de domínio</h3>
+    <ul class="check-list">
+        <li>Sei explicar o contrato entre <code>equals</code> e <code>hashCode</code>.</li>
+        <li>Distingo identidade, igualdade textual e comparação linguística.</li>
+        <li>Reconheço boxing, unboxing, overflow e limites do ponto flutuante.</li>
+        <li>Sei medir duração, administrar interrupção e escolher virtual threads.</li>
+        <li>Preservo causas de exceções e fecho recursos deterministicamente.</li>
+        <li>Entendo quando reflexão e APIs de baixo nível são justificadas.</li>
+    </ul>
+    <div class="callout tip"><strong>Próximo passo:</strong> pratique os contratos de <code>Object</code>, as transformações de <code>String</code> e o tratamento de exceções antes de avançar para reflexão e integração nativa.</div>
+    <div class="section-nav">
+        <a href="#capa">Capa</a><a href="#sumario">Sumário</a><a href="#object">Object</a>
+        <a href="#string-fundamentos">String</a><a href="#threads">Threads</a>
+        <a href="#throwable">Exceções</a><a href="#reflection">Reflexão</a><a href="#topo">Topo</a>
+    </div>
+
+    
+    <footer class="page-footer">
+        <span>Referências e checklist</span>
+        <span class="page-number">31</span>
+    </footer>
+</section></main>
+<style media="print">
+    .page { height:auto; min-height:297mm; max-height:none; overflow:visible; padding-bottom:15mm; }
+    .page-footer { position:static; margin-top:12mm; }
+    .page:last-child { break-after:auto; page-break-after:auto; }
+    thead { display:table-header-group; }
+    tfoot { display:table-footer-group; }
+    img, svg { max-width:100%; break-inside:avoid; page-break-inside:avoid; }
+</style>
+<script>
+(() => {
+    "use strict";
+    for (const link of document.querySelectorAll('a[href^="#"]')) {
+        const id = decodeURIComponent(link.getAttribute("href").slice(1));
+        if (id && !document.getElementById(id)) console.warn("Âncora interna não encontrada:", id);
+    }
+})();
+</script>
+</body>
+</html>
