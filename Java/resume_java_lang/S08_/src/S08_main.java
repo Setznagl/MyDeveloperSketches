@@ -1,5 +1,5 @@
 import java.nio.charset.StandardCharsets;
-
+@SuppressWarnings ("all")
 public class S08_main {
   static void main (String[] args) {
 

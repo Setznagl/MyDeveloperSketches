@@ -1,3 +1,4 @@
+@SuppressWarnings ("all")
 public class S05_main {
     static void main() {
 

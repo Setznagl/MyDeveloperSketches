@@ -39,14 +39,13 @@ public class S04_main {
         System.out.println(Runtime.getRuntime()
                 .exec(new String[]
                         {
-                                "brave" ,
-                                "brave-origin" ,
+                                "brave-origin" , //change for your current browser
                                 "https://www.youtube.com/watch?v=FNYA82Fn5m4"
                         }));
 
             System.out.println("\n");
 
-        System.out.println(ProcessHandle.allProcesses());
+        System.out.println(ProcessHandle.allProcesses().toList ());
         System.out.println(ProcessHandle.current());
         System.out.println(ProcessHandle.of(Runtime.getRuntime().availableProcessors()));
 

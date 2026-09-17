@@ -1,3 +1,4 @@
+@SuppressWarnings ("all")
 void main() throws InterruptedException {
 
     //Low level coordination by object monitor.
@@ -14,7 +15,7 @@ void main() throws InterruptedException {
                 synchronized (queue) {
                     while (queue.isEmpty()){
                         try {
-                            queue.wait();
+                            queue.wait(); //Causes the current thread to wait until it is awakened, typically by being notified or interrupted.
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                         }
