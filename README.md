@@ -60,3 +60,9 @@ Material de consulta sobre classes e APIs fundamentais, incluindo objetos, texto
 ---
 
 Mantido por [Gabriel Setznagl](https://github.com/Setznagl) · Veja também o projeto Java [MyBelovedSmartLibrary](https://github.com/Setznagl/MyBelovedSmartLibrary)
+
+## Transparência sobre uso de IA
+
+A estrutura e a redação deste README foram desenvolvidas com auxílio do
+OpenAI Codex. Todo o conteúdo foi revisado, adaptado e validado pelo autor
+do repositório.

@@ -60,3 +60,9 @@ A reference covering foundational classes and APIs, including objects, text, num
 ---
 
 Maintained by [Gabriel Setznagl](https://github.com/Setznagl) · See also the Java project [MyBelovedSmartLibrary](https://github.com/Setznagl/MyBelovedSmartLibrary)
+
+## AI usage disclosure
+
+The structure and wording of this README were developed with assistance
+from OpenAI Codex. All content was reviewed, adapted, and validated by
+the repository author.
