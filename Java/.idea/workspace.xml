@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="module-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Setznagl&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Setznagl/MyDeveloperSketches.git&quot;,
+    &quot;accountId&quot;: &quot;f5d69f56-148a-4893-b263-24bfe5fe719e&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.000000002629813" />
+      <entry key="S5" value="1.0008924900394711" />
+      <entry key="S10" value="1.0815526977036747" />
+      <entry key="S30" value="3.2866278406635527" />
+      <entry key="S60" value="7.98728014680765" />
+      <entry key="M2" value="15.358160476488958" />
+      <entry key="M5" value="24.67628754282512" />
+      <entry key="M10" value="29.29628093384008" />
+      <entry key="M15" value="31.11167251888888" />
+      <entry key="M30" value="34.182782825309225" />
+      <entry key="H1" value="40.2528971373341" />
+      <entry key="H2" value="53.18114415874654" />
+      <entry key="H4" value="101.79160384447168" />
+      <entry key="D1" value="523.5431844872996" />
+      <entry key="W1" value="791.5864489302496" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.3280237511131233E-10" />
+      <entry key="MS500" value="0.010583788886604436" />
+      <entry key="S2" value="0.32074529327776347" />
+      <entry key="S5" value="0.6345474699542698" />
+      <entry key="S10" value="0.796584879315628" />
+      <entry key="S30" value="0.927033755306397" />
+      <entry key="S60" value="0.9716115466036701" />
+      <entry key="M2" value="1.1139065300211086" />
+      <entry key="M5" value="1.6680911307888187" />
+      <entry key="M10" value="2.158886165526795" />
+      <entry key="M15" value="2.39676776350985" />
+      <entry key="M30" value="2.8456466413002524" />
+      <entry key="H1" value="3.8244816314314964" />
+      <entry key="H2" value="9.009977419449466" />
+      <entry key="H4" value="48.31638398203603" />
+      <entry key="D1" value="436.40122944476934" />
+      <entry key="W1" value="678.0370150226394" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="3.2206592167968938E-9" />
+      <entry key="MS500" value="0.021503890214387374" />
+      <entry key="S2" value="0.5722593493860741" />
+      <entry key="S5" value="1.1983454166207703" />
+      <entry key="S10" value="1.6238408327049758" />
+      <entry key="S30" value="4.101638806906056" />
+      <entry key="S60" value="8.886450064719822" />
+      <entry key="M2" value="16.422476858512265" />
+      <entry key="M5" value="26.312496262869548" />
+      <entry key="M10" value="31.434570535305497" />
+      <entry key="M15" value="33.493279249537906" />
+      <entry key="M30" value="37.01987005219997" />
+      <entry key="H1" value="44.07250528769605" />
+      <entry key="H2" value="62.18695834118881" />
+      <entry key="H4" value="150.09905624889862" />
+      <entry key="D1" value="959.9310846707533" />
+      <entry key="W1" value="1469.620447218493" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JLf18CnX6BvSQcjOAS24Lea8WN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AnimalClass.executor": "Run",
+    "Application.Exercise.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.S04_main.executor": "Run",
+    "Application.S05_main.executor": "Run",
+    "Application.S06_main.executor": "Run",
+    "Application.S07_main.executor": "Run",
+    "Application.S08_main.executor": "Run",
+    "Application.S09_main.executor": "Run",
+    "Application.S10_main.executor": "Run",
+    "Application.S11_main.executor": "Run",
+    "Application.S12_main.executor": "Run",
+    "Application.S13_main.executor": "Run",
+    "Application.puzzle_pag_23.executor": "Run",
+    "Application.src.S04_main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/devznagl/GitHub/MyDeveloperSketches/Java/Head-First Java (Book)",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/devznagl/GitHub/MyDeveloperSketches/Java/resume_java_lang/S04_/src/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.codegpt.services.custom"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Head-First Java (Book)/P01/src" />
+      <recent name="$PROJECT_DIR$/resume_java_lang" />
+      <recent name="$PROJECT_DIR$/resume_java_lang/S04_" />
+      <recent name="$PROJECT_DIR$/resume_java_lang/S04_/src" />
+      <recent name="$PROJECT_DIR$/resume.java.lang/S04_" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Exercise" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Exercise" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Head-First Java (Book)/P01" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="puzzle_pag_23" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="puzzle_pag_23" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10315.125" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10315.125" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="" />
+      <created>1789445050551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789445050551</updated>
+      <workItem from="1789445051608" duration="26573000" />
+      <workItem from="1789483599325" duration="10876000" />
+      <workItem from="1789577485093" duration="22842000" />
+    </task>
+    <task id="LOCAL-00001" summary="chore(Java Classes): Java.lang&#10;&#10;&gt; Theads, synchronize, notify, notifyAll&#10;&gt; Clonnable interface, clone method&#10;&gt; HashCode, Equals, Compare&#10;&gt; Class , Module.getModule(), Package.getPackage()&#10;&gt;Runtime.getRuntime() &#10;&gt; ProcessHandle()">
+      <option name="closed" value="true" />
+      <created>1789581297742</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789581297742</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations">
+      <option name="closed" value="true" />
+      <created>1789632538085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1789632538085</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore(Java Classes): Java.lang&#10;&#10;&gt; Theads, synchronize, notify, notifyAll&#10;&gt; Clonnable interface, clone method&#10;&gt; HashCode, Equals, Compare&#10;&gt; Class , Module.getModule(), Package.getPackage()&#10;&gt;Runtime.getRuntime() &#10;&gt; ProcessHandle()" />
+    <MESSAGE value="chore(Java Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
+    <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/resume_java_lang/S04_/resume_java_lang.S04_/src/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/resume_java_lang/S04_/src/src/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
