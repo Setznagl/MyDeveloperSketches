@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang">
+      <change afterPath="$PROJECT_DIR$/Head-First Java (Book)/Pg24/Pg24.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Head-First Java (Book)/Pg24/src/Puzzle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.proxyai/checkpoints/2a602422-549e-484b-85d1-a0acec004d6c/929abc02-6fb3-40f5-8330-f6f0fdd0047c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.proxyai/checkpoints/2a602422-549e-484b-85d1-a0acec004d6c/962220cf-2c0d-4498-b3d6-eda0f986d575" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.proxyai/checkpoints/2a602422-549e-484b-85d1-a0acec004d6c/a20c698c-67fc-48e3-ace9-52b89c82e96e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.proxyai/checkpoints/2a602422-549e-484b-85d1-a0acec004d6c/f05520c7-cdc1-48ff-a9b3-e371c68c2385" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Head-First Java (Book)/P01/P01.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Head-First Java (Book)/Pg23/Pg23.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Head-First Java (Book)/P01/src/Exercise.java" beforeDir="false" afterPath="$PROJECT_DIR$/Head-First Java (Book)/Pg23/src/Exercise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/S10_/S10_main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/S10_/S10_main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume_java_lang/S10_/src/S10_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S10_/src/S10_main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,61 +48,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6891076285156972" />
-      <entry key="MS500" value="4.215373487373093" />
-      <entry key="S2" value="6.0728516838792865" />
-      <entry key="S5" value="6.605001281187432" />
-      <entry key="S10" value="6.7982146317982854" />
-      <entry key="S30" value="6.931759965474512" />
-      <entry key="S60" value="6.965756051796643" />
-      <entry key="M2" value="6.982846917941518" />
-      <entry key="M5" value="6.993131285178428" />
-      <entry key="M10" value="6.996567140595653" />
-      <entry key="M15" value="6.998203377551483" />
-      <entry key="M30" value="7.124496094116495" />
-      <entry key="H1" value="9.487514348619428" />
-      <entry key="H2" value="20.544591272435184" />
-      <entry key="H4" value="58.19175481583347" />
-      <entry key="D1" value="474.2454888172746" />
-      <entry key="W1" value="790.4426653637328" />
+      <entry key="MS100" value="8.812490563456664E-246" />
+      <entry key="MS500" value="1.6800566338431147E-49" />
+      <entry key="S2" value="1.1929976003110232E-12" />
+      <entry key="S5" value="4.0084336604036607E-5" />
+      <entry key="S10" value="0.0161994152194632" />
+      <entry key="S30" value="1.1934249150218623" />
+      <entry key="S60" value="4.8903589582753355" />
+      <entry key="M2" value="12.698943502769827" />
+      <entry key="M5" value="26.801667337129008" />
+      <entry key="M10" value="35.82125059637328" />
+      <entry key="M15" value="39.660697803613864" />
+      <entry key="M30" value="44.29464972508613" />
+      <entry key="H1" value="51.95148216492039" />
+      <entry key="H2" value="75.41825631248093" />
+      <entry key="H4" value="124.79986463439725" />
+      <entry key="D1" value="558.2550292620847" />
+      <entry key="W1" value="935.6098156312961" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="6.10790953597374E-132" />
-      <entry key="S60" value="5.449551846626313E-66" />
-      <entry key="M2" value="5.200794981319129E-33" />
-      <entry key="M5" value="3.205411987104175E-13" />
-      <entry key="M10" value="1.2960926837204034E-6" />
-      <entry key="M15" value="2.1416851434369035E-4" />
-      <entry key="M30" value="0.03853869554170602" />
-      <entry key="H1" value="0.5861709439461142" />
-      <entry key="H2" value="3.410498148754075" />
-      <entry key="H4" value="25.421826124741244" />
-      <entry key="D1" value="389.4633089924375" />
-      <entry key="W1" value="670.9226388959803" />
+      <entry key="MS100" value="1.0000000003808653" />
+      <entry key="MS500" value="1.013066349998658" />
+      <entry key="S2" value="1.338329017393967" />
+      <entry key="S5" value="1.7064688870495535" />
+      <entry key="S10" value="2.2186942308542945" />
+      <entry key="S30" value="4.345107898730553" />
+      <entry key="S60" value="7.5047690425096985" />
+      <entry key="M2" value="12.390344086235165" />
+      <entry key="M5" value="19.473848799056107" />
+      <entry key="M10" value="23.499512966468927" />
+      <entry key="M15" value="25.14091266180776" />
+      <entry key="M30" value="27.034182826055286" />
+      <entry key="H1" value="29.249111378543528" />
+      <entry key="H2" value="34.57233462021457" />
+      <entry key="H4" value="50.62815078289188" />
+      <entry key="D1" value="385.60125944292764" />
+      <entry key="W1" value="709.331059474223" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.610202863338054" />
-      <entry key="MS500" value="4.1440404880488755" />
-      <entry key="S2" value="6.045292616064868" />
-      <entry key="S5" value="6.592900045413007" />
-      <entry key="S10" value="6.791970048742449" />
-      <entry key="S30" value="6.929633911714131" />
-      <entry key="S60" value="6.9646873678270165" />
-      <entry key="M2" value="6.982311154742082" />
-      <entry key="M5" value="6.9929166379149335" />
-      <entry key="M10" value="6.9964610536876375" />
-      <entry key="M15" value="6.998345645735563" />
-      <entry key="M30" value="7.16296149242088" />
-      <entry key="H1" value="10.073322151410181" />
-      <entry key="H2" value="23.953969905560168" />
-      <entry key="H4" value="83.60919256618203" />
-      <entry key="D1" value="863.6969893532107" />
-      <entry key="W1" value="1461.3623332399136" />
+      <entry key="MS100" value="1.0553432999363596E-4" />
+      <entry key="MS500" value="0.1603688595592915" />
+      <entry key="S2" value="0.7457551774915699" />
+      <entry key="S5" value="1.2962200129562873" />
+      <entry key="S10" value="1.9418738493433747" />
+      <entry key="S30" value="5.355332703548631" />
+      <entry key="S60" value="12.24386987472339" />
+      <entry key="M2" value="24.959800786703475" />
+      <entry key="M5" value="46.18698780961765" />
+      <entry key="M10" value="59.26513918362403" />
+      <entry key="M15" value="64.76134927363097" />
+      <entry key="M30" value="71.306836932383" />
+      <entry key="H1" value="81.18847132198681" />
+      <entry key="H2" value="109.98313760364947" />
+      <entry key="H4" value="175.42180227566354" />
+      <entry key="D1" value="943.8451737951078" />
+      <entry key="W1" value="1644.9378246498168" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -119,47 +117,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AnimalClass.executor": "Run",
-    "Application.Exercise.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.S04_main.executor": "Run",
-    "Application.S05_main.executor": "Run",
-    "Application.S06_main.executor": "Run",
-    "Application.S07_main.executor": "Run",
-    "Application.S08_main.executor": "Run",
-    "Application.S09_main.executor": "Run",
-    "Application.S10_main.executor": "Run",
-    "Application.S11_main.executor": "Run",
-    "Application.S12_main.executor": "Run",
-    "Application.S13_main.executor": "Run",
-    "Application.puzzle_pag_23.executor": "Run",
-    "Application.src.S04_main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/devznagl/GitHub/MyDeveloperSketches/Java/Head-First Java (Book)",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/devznagl/GitHub/MyDeveloperSketches/Java/resume_java_lang/S04_/src/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.codegpt.services.custom"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AnimalClass.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Exercise.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Puzzle.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S04_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S05_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S06_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S07_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S08_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S09_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S10_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S11_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S12_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S13_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.puzzle_pag_23.executor&quot;: &quot;Run&quot;,
+    &quot;Application.src.S04_main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/devznagl/GitHub/MyDeveloperSketches/Java/Head-First Java (Book)&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/devznagl/GitHub/MyDeveloperSketches/Java/resume_java_lang/S04_/src/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.codegpt.services.custom&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Head-First Java (Book)/P01/src" />
@@ -174,21 +174,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Exercise" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Exercise" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Head-First Java (Book)/P01" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="puzzle_pag_23" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="puzzle_pag_23" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -207,7 +192,10 @@
       <updated>1789445050551</updated>
       <workItem from="1789445051608" duration="26573000" />
       <workItem from="1789483599325" duration="10876000" />
-      <workItem from="1789577485093" duration="26646000" />
+      <workItem from="1789577485093" duration="35400000" />
+      <workItem from="1789779476093" duration="15511000" />
+      <workItem from="1789958653653" duration="1851000" />
+      <workItem from="1790107968239" duration="1356000" />
     </task>
     <task id="LOCAL-00001" summary="chore(Java Classes): Java.lang&#10;&#10;&gt; Theads, synchronize, notify, notifyAll&#10;&gt; Clonnable interface, clone method&#10;&gt; HashCode, Equals, Compare&#10;&gt; Class , Module.getModule(), Package.getPackage()&#10;&gt;Runtime.getRuntime() &#10;&gt; ProcessHandle()">
       <option name="closed" value="true" />
@@ -225,7 +213,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789632538085</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="chore(Java-Classes): Java.lang">
+      <option name="closed" value="true" />
+      <created>1789779656067</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1789779656067</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +231,8 @@
     <MESSAGE value="chore(Java Classes): Java.lang&#10;&#10;&gt; Theads, synchronize, notify, notifyAll&#10;&gt; Clonnable interface, clone method&#10;&gt; HashCode, Equals, Compare&#10;&gt; Class , Module.getModule(), Package.getPackage()&#10;&gt;Runtime.getRuntime() &#10;&gt; ProcessHandle()" />
     <MESSAGE value="chore(Java Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
     <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
+    <MESSAGE value="chore(Java-Classes): Java.lang" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

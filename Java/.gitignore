@@ -8,3 +8,6 @@
 /DataStructures*
 /DataStructures
 /DataStructures/*
+!/out/
+!/out/
+!/DataStructures/
