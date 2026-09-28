@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 @SuppressWarnings ("all")
-public class s17_main {
+public class S17_main {
   static void main (String[] args) throws IOException, InterruptedException {
     Path absolutePath = Path.of ("").toAbsolutePath ();
     Path dynamicPath = Path.of(absolutePath.toString ().concat ("/resume_java_lang/S17_/src/"));

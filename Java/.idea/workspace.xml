@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer">
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S15_/src/S15_main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S16_/src/S16_main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/hello.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/s17_main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/sum.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S18_/src/S18_main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/S19_main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/guide.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/guide2.png" afterDir="false" />
+    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang&#10;&#10;&gt; Math &amp; StrictMath&#10;&gt; Robust loggin:  &#10;System.Logger l = System.getLogger (S15_main.class.getName());&#10;&#10;l.log (System.Logger.Level.INFO, &quot;I'm warning from a Logger!&quot;);&#10;&#10;&gt; Runtime &amp; Shutdown hooks&#10;&gt; ProcessBuilder , Process and ProcessHandle&#10;&#10;&gt; Thread:  start, join, interrupt, wait, notify, notifyAll&#10;&#10;&gt; Thread.ofPlatform compared to Thread.ofVirtual with simple benchmark">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/S10_/S10_main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/S10_/S10_main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/S14_/S14_main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/S14_/S14_main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resume_java_lang/S04_/src/S04_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S04_/src/S04_main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resume_java_lang/S10_/src/S10_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S10_/src/S10_main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resume_java_lang/S14_/src/S14_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S14_/src/S14_main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume_java_lang/S16_/src/S16_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S16_/src/S16_main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume_java_lang/S17_/src/s17_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/S17_main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,61 +44,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="3.157239603723166E-166" />
-      <entry key="S10" value="1.776862291716262E-83" />
-      <entry key="S30" value="2.6094636830114828E-28" />
-      <entry key="S60" value="1.6153834520172928E-14" />
-      <entry key="M2" value="1.271070767140502E-7" />
-      <entry key="M5" value="0.0018220037235092347" />
-      <entry key="M10" value="0.08041918913858967" />
-      <entry key="M15" value="0.568932535332625" />
-      <entry key="M30" value="7.654667851538784" />
-      <entry key="H1" value="35.81348469693985" />
-      <entry key="H2" value="94.77286159746782" />
-      <entry key="H4" value="223.68403491590612" />
-      <entry key="D1" value="814.1291275149595" />
-      <entry key="W1" value="1663.7865325283017" />
-    </decayedCancelled>
-    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0000000000000162" />
-      <entry key="M2" value="1.000000130311969" />
-      <entry key="M5" value="1.0021352060829443" />
-      <entry key="M10" value="1.0796653192170471" />
-      <entry key="M15" value="1.4246135441242158" />
-      <entry key="M30" value="5.572499405142621" />
-      <entry key="H1" value="21.840793259591386" />
-      <entry key="H2" value="57.5779672783453" />
-      <entry key="H4" value="139.29135649366688" />
-      <entry key="D1" value="522.8271026021214" />
-      <entry key="W1" value="1140.8291813919498" />
+      <entry key="S2" value="1.0000000000000002" />
+      <entry key="S5" value="1.0000014982377932" />
+      <entry key="S10" value="1.0029790239026146" />
+      <entry key="S30" value="1.5110564263636097" />
+      <entry key="S60" value="2.884126969610661" />
+      <entry key="M2" value="4.66953398672687" />
+      <entry key="M5" value="7.139751708967505" />
+      <entry key="M10" value="12.475795617488977" />
+      <entry key="M15" value="18.57439822141548" />
+      <entry key="M30" value="34.3714134726644" />
+      <entry key="H1" value="65.51119531348343" />
+      <entry key="H2" value="126.03352331151454" />
+      <entry key="H4" value="254.76899386669822" />
+      <entry key="D1" value="857.1929450961899" />
+      <entry key="W1" value="1717.512891033466" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="7.12076319411018E-83" />
+      <entry key="S2" value="2.9049030048618183E-21" />
+      <entry key="S5" value="6.0989160342291525E-9" />
+      <entry key="S10" value="7.809555707105453E-5" />
+      <entry key="S30" value="0.04275019912904974" />
+      <entry key="S60" value="0.21025943884844575" />
+      <entry key="M2" value="0.5385194057898216" />
+      <entry key="M5" value="1.2983461670420513" />
+      <entry key="M10" value="2.0012509471481823" />
+      <entry key="M15" value="2.475457050773121" />
+      <entry key="M30" value="4.9709752189692535" />
+      <entry key="H1" value="17.1169023825143" />
+      <entry key="H2" value="49.54451355571186" />
+      <entry key="H4" value="128.33360334700177" />
+      <entry key="D1" value="516.737026390058" />
+      <entry key="W1" value="1140.9759938204309" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.006301888743922862" />
-      <entry key="MS500" value="0.3629895699759736" />
-      <entry key="S2" value="0.7761998180220047" />
-      <entry key="S5" value="0.9036274487040048" />
-      <entry key="S10" value="0.9505932088459316" />
-      <entry key="S30" value="0.9832521448349564" />
-      <entry key="S60" value="0.99159071437515" />
-      <entry key="M2" value="0.9957867368426689" />
-      <entry key="M5" value="1.002263663041196" />
-      <entry key="M10" value="1.1590660384392828" />
-      <entry key="M15" value="1.9921640126133453" />
-      <entry key="M30" value="13.221762464571903" />
-      <entry key="H1" value="57.64218015651874" />
-      <entry key="H2" value="152.3338218771542" />
-      <entry key="H4" value="362.9531295508396" />
-      <entry key="D1" value="1336.9415035202549" />
-      <entry key="W1" value="2804.610978683235" />
+      <entry key="MS100" value="0.8827029962906549" />
+      <entry key="MS500" value="0.9753554615276419" />
+      <entry key="S2" value="0.993781093322555" />
+      <entry key="S5" value="0.9975090640667202" />
+      <entry key="S10" value="1.001586801889695" />
+      <entry key="S30" value="1.5400071376518973" />
+      <entry key="S60" value="3.0687683543844297" />
+      <entry key="M2" value="5.180821666622831" />
+      <entry key="M5" value="8.416434609947304" />
+      <entry key="M10" value="14.461439306856642" />
+      <entry key="M15" value="21.03741424730612" />
+      <entry key="M30" value="39.33257911985969" />
+      <entry key="H1" value="82.61591708929338" />
+      <entry key="H2" value="175.56198516117328" />
+      <entry key="H4" value="383.0813799032589" />
+      <entry key="D1" value="1373.9152982655535" />
+      <entry key="W1" value="2858.484132382582" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -216,7 +203,7 @@
       <workItem from="1790107968239" duration="37338000" />
       <workItem from="1790368545342" duration="30368000" />
       <workItem from="1790451200263" duration="10108000" />
-      <workItem from="1790623414992" duration="339000" />
+      <workItem from="1790623414992" duration="2338000" />
     </task>
     <task id="LOCAL-00001" summary="chore(Java Classes): Java.lang&#10;&#10;&gt; Theads, synchronize, notify, notifyAll&#10;&gt; Clonnable interface, clone method&#10;&gt; HashCode, Equals, Compare&#10;&gt; Class , Module.getModule(), Package.getPackage()&#10;&gt;Runtime.getRuntime() &#10;&gt; ProcessHandle()">
       <option name="closed" value="true" />
@@ -250,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790109627532</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="chore(Java-Classes): Java.lang&#10;&#10;&gt; Math &amp; StrictMath&#10;&gt; Robust loggin:  &#10;System.Logger l = System.getLogger (S15_main.class.getName());&#10;&#10;l.log (System.Logger.Level.INFO, &quot;I'm warning from a Logger!&quot;);&#10;&#10;&gt; Runtime &amp; Shutdown hooks&#10;&gt; ProcessBuilder , Process and ProcessHandle&#10;&#10;&gt; Thread:  start, join, interrupt, wait, notify, notifyAll&#10;&#10;&gt; Thread.ofPlatform compared to Thread.ofVirtual with simple benchmark">
+      <option name="closed" value="true" />
+      <created>1790623914027</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1790623914027</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +257,8 @@
     <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
     <MESSAGE value="chore(Java-Classes): Java.lang" />
     <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer" />
+    <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; Math &amp; StrictMath&#10;&gt; Robust loggin:  &#10;System.Logger l = System.getLogger (S15_main.class.getName());&#10;&#10;l.log (System.Logger.Level.INFO, &quot;I'm warning from a Logger!&quot;);&#10;&#10;&gt; Runtime &amp; Shutdown hooks&#10;&gt; ProcessBuilder , Process and ProcessHandle&#10;&#10;&gt; Thread:  start, join, interrupt, wait, notify, notifyAll&#10;&#10;&gt; Thread.ofPlatform compared to Thread.ofVirtual with simple benchmark" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang&#10;&#10;&gt; Math &amp; StrictMath&#10;&gt; Robust loggin:  &#10;System.Logger l = System.getLogger (S15_main.class.getName());&#10;&#10;l.log (System.Logger.Level.INFO, &quot;I'm warning from a Logger!&quot;);&#10;&#10;&gt; Runtime &amp; Shutdown hooks&#10;&gt; ProcessBuilder , Process and ProcessHandle&#10;&#10;&gt; Thread:  start, join, interrupt, wait, notify, notifyAll&#10;&#10;&gt; Thread.ofPlatform compared to Thread.ofVirtual with simple benchmark" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

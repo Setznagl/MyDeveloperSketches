@@ -15,7 +15,6 @@ public class S16_main {
     IO.println (Runtime.version ());
 
 
-
     Thread T1 = new Thread (
       () -> {
         synchronized (concSafeSum){
