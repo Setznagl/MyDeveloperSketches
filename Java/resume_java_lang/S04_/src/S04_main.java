@@ -16,14 +16,14 @@ public class S04_main {
 
         Package S04_package = AnimalClass.class.getPackage();
         System.out.println(S04_package);
-        System.out.println("Possível extrair muitos metadados do pacote");
+        System.out.println("Extract metadata from a package");
 
             System.out.println("\n");
 
         Module S04_module = AnimalClass.class.getModule();
         System.out.println(S04_module);
         System.out.println(S04_module.getPackages());
-        System.out.println("Possível extrair metadados, configurações e estados do módulo");
+        System.out.println("Extract metadata from a module");
 
             System.out.println("\n");
 

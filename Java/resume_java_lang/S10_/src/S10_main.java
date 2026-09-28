@@ -110,7 +110,7 @@ public class S10_main {
     // Print final result
     System.out.println("Final Builder Result:             " + sharedBuilder.toString());
     System.out.println("Final Sync Builder Result:        " + synchronizedSharedBuild.toString()); //Synchronized access, but without synchronized edit methods
-    System.out.println("Final Builder Sync Metods Result: " + synchronizedSharedBuildWithSynchronizedMethods.toString()); //Synchronized access, with synchronized edit methods
+    System.out.println("Final Builder Sync Append Result: " + synchronizedSharedBuildWithSynchronizedMethods.toString()); //Synchronized access, with synchronized edit methods
     System.out.println("Final Buffer Result:              " + sharedBuffer.toString()); //Synchronized access and synchronized edit by default
   }
 

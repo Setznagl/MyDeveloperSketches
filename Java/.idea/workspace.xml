@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang">
-      <change afterPath="$PROJECT_DIR$/Head-First Java (Book)/Pg24/Pg24.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Head-First Java (Book)/Pg24/src/Puzzle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="5951bcb8-6ffb-404d-aa28-4847ee0cd994" name="Changes" comment="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer">
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S15_/src/S15_main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S16_/src/S16_main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/hello.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/s17_main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S17_/src/sum.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S18_/src/S18_main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/S19_main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/guide.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/guide.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resume_java_lang/S19_/src/guide2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/S10_/S10_main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/S10_/S10_main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/S14_/S14_main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/S14_/S14_main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume_java_lang/S04_/src/S04_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S04_/src/S04_main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resume_java_lang/S10_/src/S10_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S10_/src/S10_main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume_java_lang/S14_/src/S14_main.java" beforeDir="false" afterPath="$PROJECT_DIR$/resume_java_lang/S14_/src/S14_main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,61 +57,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="8.812490563456664E-246" />
-      <entry key="MS500" value="1.6800566338431147E-49" />
-      <entry key="S2" value="1.1929976003110232E-12" />
-      <entry key="S5" value="4.0084336604036607E-5" />
-      <entry key="S10" value="0.0161994152194632" />
-      <entry key="S30" value="1.1934249150218623" />
-      <entry key="S60" value="4.8903589582753355" />
-      <entry key="M2" value="12.698943502769827" />
-      <entry key="M5" value="26.801667337129008" />
-      <entry key="M10" value="35.82125059637328" />
-      <entry key="M15" value="39.660697803613864" />
-      <entry key="M30" value="44.29464972508613" />
-      <entry key="H1" value="51.95148216492039" />
-      <entry key="H2" value="75.41825631248093" />
-      <entry key="H4" value="124.79986463439725" />
-      <entry key="D1" value="558.2550292620847" />
-      <entry key="W1" value="935.6098156312961" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.157239603723166E-166" />
+      <entry key="S10" value="1.776862291716262E-83" />
+      <entry key="S30" value="2.6094636830114828E-28" />
+      <entry key="S60" value="1.6153834520172928E-14" />
+      <entry key="M2" value="1.271070767140502E-7" />
+      <entry key="M5" value="0.0018220037235092347" />
+      <entry key="M10" value="0.08041918913858967" />
+      <entry key="M15" value="0.568932535332625" />
+      <entry key="M30" value="7.654667851538784" />
+      <entry key="H1" value="35.81348469693985" />
+      <entry key="H2" value="94.77286159746782" />
+      <entry key="H4" value="223.68403491590612" />
+      <entry key="D1" value="814.1291275149595" />
+      <entry key="W1" value="1663.7865325283017" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000003808653" />
-      <entry key="MS500" value="1.013066349998658" />
-      <entry key="S2" value="1.338329017393967" />
-      <entry key="S5" value="1.7064688870495535" />
-      <entry key="S10" value="2.2186942308542945" />
-      <entry key="S30" value="4.345107898730553" />
-      <entry key="S60" value="7.5047690425096985" />
-      <entry key="M2" value="12.390344086235165" />
-      <entry key="M5" value="19.473848799056107" />
-      <entry key="M10" value="23.499512966468927" />
-      <entry key="M15" value="25.14091266180776" />
-      <entry key="M30" value="27.034182826055286" />
-      <entry key="H1" value="29.249111378543528" />
-      <entry key="H2" value="34.57233462021457" />
-      <entry key="H4" value="50.62815078289188" />
-      <entry key="D1" value="385.60125944292764" />
-      <entry key="W1" value="709.331059474223" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0000000000000162" />
+      <entry key="M2" value="1.000000130311969" />
+      <entry key="M5" value="1.0021352060829443" />
+      <entry key="M10" value="1.0796653192170471" />
+      <entry key="M15" value="1.4246135441242158" />
+      <entry key="M30" value="5.572499405142621" />
+      <entry key="H1" value="21.840793259591386" />
+      <entry key="H2" value="57.5779672783453" />
+      <entry key="H4" value="139.29135649366688" />
+      <entry key="D1" value="522.8271026021214" />
+      <entry key="W1" value="1140.8291813919498" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.0553432999363596E-4" />
-      <entry key="MS500" value="0.1603688595592915" />
-      <entry key="S2" value="0.7457551774915699" />
-      <entry key="S5" value="1.2962200129562873" />
-      <entry key="S10" value="1.9418738493433747" />
-      <entry key="S30" value="5.355332703548631" />
-      <entry key="S60" value="12.24386987472339" />
-      <entry key="M2" value="24.959800786703475" />
-      <entry key="M5" value="46.18698780961765" />
-      <entry key="M10" value="59.26513918362403" />
-      <entry key="M15" value="64.76134927363097" />
-      <entry key="M30" value="71.306836932383" />
-      <entry key="H1" value="81.18847132198681" />
-      <entry key="H2" value="109.98313760364947" />
-      <entry key="H4" value="175.42180227566354" />
-      <entry key="D1" value="943.8451737951078" />
-      <entry key="W1" value="1644.9378246498168" />
+      <entry key="MS100" value="0.006301888743922862" />
+      <entry key="MS500" value="0.3629895699759736" />
+      <entry key="S2" value="0.7761998180220047" />
+      <entry key="S5" value="0.9036274487040048" />
+      <entry key="S10" value="0.9505932088459316" />
+      <entry key="S30" value="0.9832521448349564" />
+      <entry key="S60" value="0.99159071437515" />
+      <entry key="M2" value="0.9957867368426689" />
+      <entry key="M5" value="1.002263663041196" />
+      <entry key="M10" value="1.1590660384392828" />
+      <entry key="M15" value="1.9921640126133453" />
+      <entry key="M30" value="13.221762464571903" />
+      <entry key="H1" value="57.64218015651874" />
+      <entry key="H2" value="152.3338218771542" />
+      <entry key="H4" value="362.9531295508396" />
+      <entry key="D1" value="1336.9415035202549" />
+      <entry key="W1" value="2804.610978683235" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -133,7 +142,13 @@
     &quot;Application.S11_main.executor&quot;: &quot;Run&quot;,
     &quot;Application.S12_main.executor&quot;: &quot;Run&quot;,
     &quot;Application.S13_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S14_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S15_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S16_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S18_main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.S19_main.executor&quot;: &quot;Run&quot;,
     &quot;Application.puzzle_pag_23.executor&quot;: &quot;Run&quot;,
+    &quot;Application.s17_main.executor&quot;: &quot;Run&quot;,
     &quot;Application.src.S04_main.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
@@ -141,6 +156,9 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/devznagl/.local/share/JetBrains/IntelliJIdea2026.2/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.hello.sh.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.sum.sh.executor&quot;: &quot;Run&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -157,16 +175,16 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.codegpt.services.custom&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resume_java_lang/S19_/src" />
       <recent name="$PROJECT_DIR$/Head-First Java (Book)/P01/src" />
       <recent name="$PROJECT_DIR$/resume_java_lang" />
       <recent name="$PROJECT_DIR$/resume_java_lang/S04_" />
       <recent name="$PROJECT_DIR$/resume_java_lang/S04_/src" />
-      <recent name="$PROJECT_DIR$/resume.java.lang/S04_" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="src" />
@@ -195,7 +213,10 @@
       <workItem from="1789577485093" duration="35400000" />
       <workItem from="1789779476093" duration="15511000" />
       <workItem from="1789958653653" duration="1851000" />
-      <workItem from="1790107968239" duration="1356000" />
+      <workItem from="1790107968239" duration="37338000" />
+      <workItem from="1790368545342" duration="30368000" />
+      <workItem from="1790451200263" duration="10108000" />
+      <workItem from="1790623414992" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="chore(Java Classes): Java.lang&#10;&#10;&gt; Theads, synchronize, notify, notifyAll&#10;&gt; Clonnable interface, clone method&#10;&gt; HashCode, Equals, Compare&#10;&gt; Class , Module.getModule(), Package.getPackage()&#10;&gt;Runtime.getRuntime() &#10;&gt; ProcessHandle()">
       <option name="closed" value="true" />
@@ -221,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789779656067</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer">
+      <option name="closed" value="true" />
+      <created>1790109627532</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1790109627532</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +261,8 @@
     <MESSAGE value="chore(Java Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
     <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; String (join,format,concat,split,lines,indent,contains,valueOf,etc...)&#10;&gt; Unicode&#10;&gt; StringBuilder &amp; StringBuffer&#10;&gt; Wrappers&#10;&gt; toBinaryString , toHexString , toOctalString&#10;&gt; Float operations" />
     <MESSAGE value="chore(Java-Classes): Java.lang" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang" />
+    <MESSAGE value="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(Java-Classes): Java.lang&#10;&#10;&gt; Experiments: Synchronized StringBuilders vs StringBuffer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
